@@ -1,0 +1,32 @@
+.ofertas-carrousel {
+    .ofertas-ul {
+        display: flex;
+        flex-flow: row nowrap;
+        list-style-type: none;
+        width: 100%;
+        scroll-snap-type: x mandatory;
+        height: max-content;
+        > li {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            width: 100vw;
+            > a {
+                > img {
+                    width: 100vw;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .ofertas-ul {
+        overflow-x: scroll;
+    }
+}
+
+@media screen and (min-width: 426px) {
+    .ofertas-ul {
+        overflow-x: hidden;
+    }
+}

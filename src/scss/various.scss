@@ -1,0 +1,26 @@
+
+.various-carrousel {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    overflow-x: scroll;
+    > li {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        > img {
+            border-radius: 50%;
+            background-color: white;
+            width: 50px;
+            box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.212);
+        }
+        > p {
+            font-size: .8rem;
+            text-align: center;
+            height: 30px;
+        }
+    }
+}

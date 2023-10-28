@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+$main-color: rgb(251, 251, 92);
+$shade-gray: rgb(67, 67, 67);
+
+html {
+    font-size: 15px;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: $main-color;
+    .header-wrapper {
+        height: 70px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        #logo {
+            width: 60px;
+        }
+        #query-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid $shade-gray;
+            border-radius: 3px;
+            background-color: white;
+            height: 35px;
+            width: 50%;
+            #query-icon {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding: 5px;
+                > svg {
+                    fill: $shade-gray;
+                }
+            }
+            #query {
+                padding: 5px;
+                border: none;
+                background-color: transparent;
+                width: 90%;
+                font-size: 1rem;
+            }
+        }
+        .hamburguer-menu {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: center;
+            > span {
+                background-color: $shade-gray;
+                height: 3px;
+                border-radius: 5px;
+                width: 100%;
+                display: block;
+            }
+        }
+        .shopping-cart {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+main {
+    
+}
+
+footer {
+    
+}
