@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import "../scss/various.scss";
 
-type scrollNode = {
-    image: string,
-    title: string,
-}
-
 async function loadImages() {
     const promises = [
         {
