@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "../scss/various.scss";
 
+type scrollNode = {
+    image: string,
+    title: string,
+}
+
 async function loadImages() {
     const promises = [
         {
@@ -53,21 +58,23 @@ async function loadImages() {
             (promiseObj) => promiseObj.image
         )
     );
+    const images = resolvedPromises.map((image) => image.default)
     const titles = [...promises.map(object => object.title)]
-    return {resolvedPromises, titles};
+    const objects: scrollNode[] = images.map((image, index) => ({
+        image,
+        title: titles[index],
+    }))
+    return objects;
 }
 
 function CarrouselVarious() {
-    const [images, setImages] = useState<string[]>([]);
-    const [titles, setTitles] = useState<string[]>([]);
+    const [scrollNodes, setScrollNodes] = useState<scrollNode[]>([]);
 
     useEffect(() => {
         async function fetchImages() {
             try {
-                const loadedObject = await loadImages();
-                const loadedObjectArray = loadedObject.resolvedPromises.map(image => image.default);
-                setImages(loadedObjectArray);
-                setTitles(loadedObject.titles)
+                const loadedObjects = await loadImages();
+                setScrollNodes([...loadedObjects])
             } catch (err) {
                 console.error("Error loading images:", err);
             }
@@ -81,11 +88,11 @@ function CarrouselVarious() {
             <section className="various-carrousel-wrapper">
                 <ul className="various-carrousel">
                     {
-                        images.map(
-                            (image, key) => (
+                        scrollNodes.map(
+                            (obj, key) => (
                                 <li key={key}>
-                                    <img src={image} alt="" />
-                                    <p>{titles[key]}</p>
+                                    <img src={obj.image} alt="" />
+                                    <p>{obj.title}</p>
                                 </li>
                             )
                         )
