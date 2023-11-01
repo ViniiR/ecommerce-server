@@ -1,7 +1,7 @@
 
 
 .frete-gratis {
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.304);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.068);
     height: 30px;
     border-radius: 5px;
     margin: auto;
@@ -9,6 +9,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    background-color: white;
     font-size: .7rem;
     align-items: center;
     > p {

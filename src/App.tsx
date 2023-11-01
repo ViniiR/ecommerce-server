@@ -3,6 +3,7 @@ import InformeCep from "./components/InformeCep";
 import Ofertas from "./components/Ofertas";
 import Frete from "./components/Frete";
 import CarrouselVarious from "./components/CarrouselVarious";
+import CarrouselAndes from "./components/CarrouselAndes";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -37,6 +38,12 @@ export function TextoFrete() {
 export function CarrouselVariety() {
     return (
         <CarrouselVarious></CarrouselVarious>
+    );
+}
+
+export function Andes() {
+    return (
+        <CarrouselAndes></CarrouselAndes>
     );
 }
 

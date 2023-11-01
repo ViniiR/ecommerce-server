@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Menu, OfertasCarrousel, TextoFrete, CarrouselVariety} from "./App.tsx";
+import {Menu, OfertasCarrousel, TextoFrete, CarrouselVariety, Andes} from "./App.tsx";
 import "./scss/styles.scss";
 
 const menuRoot = document.querySelector('#menu-root');
@@ -32,5 +32,13 @@ const variousRoot = document.querySelector('#carrousel-various-root');
 ReactDOM.createRoot(variousRoot!).render(
     <React.StrictMode>
         <CarrouselVariety></CarrouselVariety>
+    </React.StrictMode>
+);
+
+const andesRoot = document.querySelector('#andes-carrousel');
+
+ReactDOM.createRoot(andesRoot!).render(
+    <React.StrictMode>
+        <Andes></Andes>
     </React.StrictMode>
 );

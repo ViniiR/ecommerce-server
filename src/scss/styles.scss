@@ -2,9 +2,14 @@
 
 $main-color: rgb(251, 251, 92);
 $shade-gray: rgb(67, 67, 67);
+$background-shade: #ebebeb;
 
 html {
     font-size: 15px;
+}
+
+body {
+    background-color: $background-shade;
 }
 
 * {
