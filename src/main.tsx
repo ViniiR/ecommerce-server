@@ -1,44 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Menu, OfertasCarrousel, TextoFrete, CarrouselVariety, Andes} from "./App.tsx";
+// import {Menu, OfertasCarrousel, TextoFrete, CarrouselVariety, Andes, CriarConta, MeliRoot} from "./App.tsx";
+
+import App from "./App";
 import "./scss/styles.scss";
 
-const menuRoot = document.querySelector('#menu-root');
+const root = document.querySelector('#root');
 
-ReactDOM.createRoot(menuRoot!).render(
+ReactDOM.createRoot(root!).render(
     <React.StrictMode>
-        <Menu />
-    </React.StrictMode>
-);
-
-const ofertasRoot = document.querySelector('#ofertas-do-dia-root');
-
-ReactDOM.createRoot(ofertasRoot!).render(
-    <React.StrictMode>
-        <OfertasCarrousel></OfertasCarrousel>
-    </React.StrictMode>
-);
-
-const freteRoot = document.querySelector('#frete-root');
-
-ReactDOM.createRoot(freteRoot!).render(
-    <React.StrictMode>
-        <TextoFrete></TextoFrete>
-    </React.StrictMode>
-);
-
-const variousRoot = document.querySelector('#carrousel-various-root');
-
-ReactDOM.createRoot(variousRoot!).render(
-    <React.StrictMode>
-        <CarrouselVariety></CarrouselVariety>
-    </React.StrictMode>
-);
-
-const andesRoot = document.querySelector('#andes-carrousel');
-
-ReactDOM.createRoot(andesRoot!).render(
-    <React.StrictMode>
-        <Andes></Andes>
+        <App></App>
     </React.StrictMode>
 );

@@ -1,0 +1,38 @@
+$blue-shade: #3483fa;
+$background-shade: #ebebeb;
+
+.crie-conta-wrapper {
+    width: 100%;
+    padding: 10px 0px;
+    .crie-conta-container {
+        margin: auto;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.038);
+        border-radius: 5px;
+        padding: 15px 10px;
+        width:  90%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        > h2 {
+            font-size: 1.2rem;
+        }
+        >.criar-conta-button {
+            width: 90%;
+            background-color: $blue-shade;
+            border: none;
+            height: 45px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+        > p {
+            color: rgb(81, 81, 81);
+            > a {
+                color: $blue-shade;
+            }
+        }
+    }
+}
