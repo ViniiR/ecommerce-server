@@ -1,40 +1,38 @@
 import { useEffect, useState } from 'react';
+import '../scss/meliPlus.scss'
 
 function MeliPlus() {
-    const [content, setContent] = useState<meliPlusNode[]>([]);
+    const [content, setContent] = useState<dataObject[]>([]);
 
     useEffect(() => {
         async function fetchImages() {
 
-            const promises: meliPlusNode[] = [
+            const content: meliPlusNode[] = [
                 {
-                    icon: import('../assets/truckgiftv4@2x.png'),
+                    icon: await import('../assets/truckgiftv4@2x.png'),
                     description: 'Frete grátis em milhões de produtos a partir de R$ 29,00',
                 },
                 {
-                    icon: import('../assets/combo-widgetl6@2x.jpg'),
+                    icon: await import('../assets/combo-widgetl6@2x.jpg'),
                     description: 'Disney+ e Star+ sem custo',
                 },
                 {
-                    icon: import('../assets/deezer-l6widget@2x.jpg'),
+                    icon: await import('../assets/deezer-l6widget@2x.jpg'),
                     description: '12 Meses grátis da Deezer Premium',
                 },
                 {
-                    icon: import('../assets/ultrapasse-widget@2x.png'),
+                    icon: await import('../assets/ultrapasse-widget@2x.png'),
                     description: '60% OFF no Ultrapasse e outros benefícios',
                 },
             ];
 
-            const resolvedData: meliPlusNode[] = [];
-            const iconsPromises = promises.map((object) => object.icon)
-            const resolvedIcons = await Promise.all(iconsPromises) as unknown as iconsObject[];
-            const titles = promises.map((obj) => obj.description)
-            titles.forEach((title, index) => {
-                resolvedData.push({
-                    icon: resolvedIcons[index].default,
-                    description: title
-                });
-            });
+            const resolvedData: dataObject[] = content.map((object) => (
+                    {
+                        icon: object.icon.default,
+                        description: object.description
+                    }
+                )
+            );
             
             setContent(resolvedData)
         }
@@ -45,9 +43,21 @@ function MeliPlus() {
 
     return (
         <>
-            <section className="meli-plus-container">
+            <section className="meli-plus-image-container">
                 <header>
-
+                    <section>
+                        <p className='assine-o'>
+                            Assine o
+                        </p>
+                        <div className='meli-plus-icon'>
+                            meli+
+                        </div>
+                    </section>
+                    <section>
+                        <p>
+                            | R$ 17 <sup>99</sup> <small>/mês</small>
+                        </p>
+                    </section>
                 </header>
                 <main>
                     <p>

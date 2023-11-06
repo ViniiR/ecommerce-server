@@ -13,12 +13,11 @@ type contentNode = {
 };
 
 type meliPlusNode = {
-    icon: Promise<typeof import("*.png")> | string;
-    description: string;
+    icon: typeof import("*.png"),
+    description: string,
 };
 
-type iconsString = string | typeof import("*.png");
-
-type iconsObject = {
-    default: string,
-};
+type dataObject = {
+    icon: string,
+    description: string,
+}
