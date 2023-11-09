@@ -1,4 +1,4 @@
-    /// <reference types="vite/client" />
+/// <reference types="vite/client" />
 
 type scrollNode = {
     image: string;
@@ -13,11 +13,18 @@ type contentNode = {
 };
 
 type meliPlusNode = {
-    icon: typeof import("*.png"),
-    description: string,
+    icon: typeof import("*.png");
+    description: string;
 };
 
 type dataObject = {
-    icon: string,
-    description: string,
-}
+    icon: string;
+    description: string;
+};
+
+type beneficiosNode = {
+    background: typeof import("*.jpg");
+    icon: typeof import("*.jpg");
+    title: string;
+    description: string;
+};

@@ -1,0 +1,68 @@
+$main-color: rgb(251, 251, 92);
+$blue-shade: #3483fa;
+
+#mobile-footer {
+    .compre-venda {
+        background-color: $main-color;
+        padding: 5px 30px;
+        > a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+            gap: 20px;
+            > img {
+                width: 60px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.173);
+            }
+            > p {
+                font-size: 1.1rem;
+            }
+        }
+    }
+    .footer-mobile-links {
+        > ul {
+            display: grid;
+            padding: 40px;
+            list-style-type: none;
+            grid-template-columns: repeat(2, 50%);
+            grid-template-rows: repeat(5, 30px);
+            gap: 10px;
+            > li {
+                > a {
+                    text-decoration: none;
+                    font-size: .9rem;
+                    color: rgb(0, 0, 0);
+                }
+            }
+        }
+    }
+    .crie-conta {
+        padding: 0px 40px;
+        display: flex;
+        gap: 20px;
+        > a {
+            color: $blue-shade;
+            text-decoration: none;
+        }
+    }
+    .terms-conditions {
+        padding: 40px;
+        font-size: .9rem;
+        > small {
+            > p {
+                &:first-child {
+                    margin-bottom: 10px;
+                }
+                &.ltda-paragraph {
+                    color: gray;
+                }
+                &.faded-terms {
+                    color: gray;
+                }
+            }
+        }
+    }
+}

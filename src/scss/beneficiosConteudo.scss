@@ -1,0 +1,52 @@
+
+
+.beneficios-container {
+    background-color: white;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 20px;
+    > ul {
+        display: flex;
+        flex-flow: row;
+        list-style-type: none;
+        width: max-content;
+        gap: 20px;
+        > li {
+            border-radius: 5px;
+            width: 340px;
+            background-repeat: no-repeat;
+            height: 250px;
+            background-size: contain;
+            color: white;
+            > section {
+                display: flex;
+                flex-flow: row nowrap;
+                width: 95%;
+                align-items: end;
+                gap: 10px;
+                margin: auto;
+                height: 95%;
+                > img {
+                    background-color: white;
+                    width: 80px;
+                    border-radius: 10px;
+                }
+                > section {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 80px;
+                    > h2 {
+                        font-size: 1.3rem;
+                    }
+                    > p {
+
+                    }
+                }
+            }
+        }
+    }
+}
