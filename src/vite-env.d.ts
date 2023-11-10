@@ -28,3 +28,12 @@ type beneficiosNode = {
     title: string;
     description: string;
 };
+
+type SPData = {
+    image: typeof import("*.webp");
+    title: string;
+    price: string;
+    oldPrice: string;
+    percentOFF: string;
+    dividedPrice: string;
+};
