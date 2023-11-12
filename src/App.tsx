@@ -8,6 +8,7 @@ import MeliPlus from './components/MeliPlus'
 import BeneficiosConteudo from "./components/BeneficiosConteudo";
 import MobileFooter from "./components/MobileFooter";
 import SingleProduct from "./components/SingleProduct";
+import FourProducts from "./components/FourProducts";
 
 function App() {
     
@@ -45,6 +46,7 @@ function App() {
                 <CrieConta></CrieConta>
                 <MeliPlus></MeliPlus>
                 <SingleProduct></SingleProduct>
+                <FourProducts></FourProducts>
                 <BeneficiosConteudo></BeneficiosConteudo>
             </main>
             <MobileFooter></MobileFooter>
