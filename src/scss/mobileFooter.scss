@@ -1,9 +1,9 @@
-$main-color: rgb(251, 251, 92);
-$blue-shade: #3483fa;
+@import './_variables.scss';
+
 
 #mobile-footer {
     .compre-venda {
-        background-color: $main-color;
+        background-color: $main-yellow;
         padding: 5px 30px;
         > a {
             display: flex;

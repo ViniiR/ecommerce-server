@@ -1,6 +1,4 @@
-$main-color: rgb(183, 183, 40);
-$background-shade: #ebebeb;
-$blue-shade: #3483fa;
+@import './_variables.scss';
 
 .andes-wrapper {
     overflow-x: scroll;
@@ -32,7 +30,7 @@ $blue-shade: #3483fa;
                 > svg {
                     width: 40px;
                     height: 40px;
-                    fill: $main-color;
+                    fill: $dark-yellow;
                 }
             }
             &:first-child {

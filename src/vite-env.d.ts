@@ -37,3 +37,8 @@ type SPData = {
     percentOFF: string;
     dividedPrice: string;
 };
+
+type UlData = {
+    icon: ReactElement,
+    name: string
+}
