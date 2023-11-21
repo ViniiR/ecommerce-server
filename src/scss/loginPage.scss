@@ -1,0 +1,13 @@
+@import '../scss/variables';
+
+.login-page {
+    > .login-header {
+        background-color: $main-yellow;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        > img {
+            width: 50px;
+        }
+    }
+}
