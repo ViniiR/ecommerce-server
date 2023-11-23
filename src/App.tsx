@@ -1,4 +1,4 @@
-import { createBrowserRouter, createRoutesFromElements, Link, Route, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Ofertas from "./components/Ofertas";
 import Frete from "./components/Frete";
 import CarrouselVarious from "./components/CarrouselVarious";
@@ -10,33 +10,19 @@ import MobileFooter from "./components/MobileFooter";
 import SingleProduct from "./components/SingleProduct";
 import FourProducts from "./components/FourProducts";
 import MobileHeader from "./components/MobileHeader";
-import LoginPage from "../login.tsx";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
-
-    const router = createBrowserRouter(
-        createRoutesFromElements(
-            <Route path='/' element={<Root/>}>
-                <Route index element={<HomePage></HomePage>}></Route>
-                <Route path='login' element={<LoginPage></LoginPage>}></Route>
-            </Route>
-        )
-    );
-
     return (
-        <>
-            <RouterProvider router={router} />
-        </>
+        <div className='App'>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<HomePage></HomePage>}></Route>
+                    <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </div>
     );
-}
-
-function Root() {
-    return (
-        <>
-            <Link to="login">aa</Link>
-            why the fuck is this not working
-        </>
-    )
 }
 
 function HomePage() {
