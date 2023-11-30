@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Ofertas from "./components/Ofertas";
 import Frete from "./components/Frete";
 import CarrouselVarious from "./components/CarrouselVarious";
@@ -11,14 +11,21 @@ import SingleProduct from "./components/SingleProduct";
 import FourProducts from "./components/FourProducts";
 import MobileHeader from "./components/MobileHeader";
 import LoginPage from "./pages/LoginPage";
+import CriarContaPage from "./pages/CriarContaPage";
+import { useState } from "react";
+import Teste from "./pages/testelogin";
 
 function App() {
+    const [token, setToken] = useState();
+
     return (
-        <div className='App'>
+        <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<HomePage></HomePage>}></Route>
-                    <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+                    {/* <Route path="/" element={<HomePage />}></Route> */}
+                    <Route path="/login" element={<LoginPage />}></Route>
+                    <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
+                    <Route path="/" element={token ? <Teste></Teste> : <CriarContaPage></CriarContaPage>}></Route>
                 </Routes>
             </BrowserRouter>
         </div>

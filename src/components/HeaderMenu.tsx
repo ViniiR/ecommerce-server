@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../scss/headerMenu.scss";
+import { Link } from "react-router-dom";
 
 function HeaderMenu() {
     const [content, setContent] = useState<UlData[][]>([]);
@@ -126,8 +127,8 @@ function HeaderMenu() {
                         </section>
                     </section>
                     <section id="entre-crie-conta-buttons-section">
-                        <button id="entre-btn">Entre</button>
-                        <button id="crie-sua-conta-btn">Crie a sua conta</button>
+                        <Link to="/login" id="entre-btn">Entre</Link>
+                        <a id="crie-sua-conta-btn">Crie a sua conta</a>
                     </section>
                 </header>
                 <main>

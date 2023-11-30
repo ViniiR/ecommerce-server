@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../scss/loginPage.scss";
 
@@ -18,7 +19,7 @@ function LoginPage() {
                             </section>
                             <section className="low-buttons-wrapper">
                                 <input type="submit" value="Continuar" id="continuar-button" />
-                                <a href="#" id="criar-conta-button">Criar conta</a>
+                                <Link to="/crie-sua-conta" id="criar-conta-button">Criar conta</Link>
                             </section>
                         </section>
                     </form>

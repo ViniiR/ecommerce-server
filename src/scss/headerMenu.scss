@@ -31,18 +31,22 @@
             display: flex;
             gap: 10px;
             justify-content: center;
-            > button {
+            > a {
                 width: 50%;
                 height: 40px;
                 border-radius: 5px;
                 border: 1px solid $blue-shade;
+                text-decoration: none;
                 font-weight: 500;
+                display: grid;
+                place-items: center;
                 &#entre-btn {
                     color: white;
                     background-color: $blue-shade;
                 }
                 &#crie-sua-conta-btn {
                     color: $blue-shade;
+                    background-color: white;
                 }
             }
         }

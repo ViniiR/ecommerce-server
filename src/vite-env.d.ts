@@ -42,3 +42,16 @@ type UlData = {
     icon: ReactElement,
     name: string
 }
+
+type InputProps = {
+    label: string;
+    id: string;
+    name: string;
+    type: string;
+}
+
+type DataForm = {
+    name: string;
+    email: string;
+    password: string;
+};
