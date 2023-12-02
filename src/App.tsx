@@ -22,10 +22,10 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    {/* <Route path="/" element={<HomePage />}></Route> */}
+                    <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
-                    <Route path="/" element={token ? <Teste></Teste> : <CriarContaPage></CriarContaPage>}></Route>
+                    {/* <Route path="/" element={token ? <Teste></Teste> : <CriarContaPage></CriarContaPage>}></Route> */}
                 </Routes>
             </BrowserRouter>
         </div>

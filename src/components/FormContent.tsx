@@ -1,6 +1,7 @@
 import { SubmitHandler, useFormContext, FieldValues } from "react-hook-form";
 import InputForm from "../components/InputForm";
 import { userSchema } from "../Validations/UserValidation";
+
 function FormContent() {
 
     const {handleSubmit} = useFormContext()
@@ -21,7 +22,9 @@ function FormContent() {
             password: data.password,
         };
         const isValid = await userSchema.isValid(formData)
-        console.log(isValid);
+        if (isValid) {
+            console.log(isValid);
+        }
     }
 
     return (
