@@ -1,10 +1,11 @@
 const express = require("express");
-const users = require('./models/users.cjs');
+const users = require('./models/users.js');
+const db = require('./models')
 
 const app = express();
 const port = 5000;
 
-users.sequelize.sync().then(() => {
+db.sequelize.sync().then(() => {
     app.listen(port, () => {
         console.log("server is running at localhost:", port);
     });
