@@ -1,20 +1,51 @@
-// const sequelize = require('./sequelize.cjs')
-// const {DataTypes} = require('sequelize')
 
-module.exports = (sequelize, DataTypes) => {
-    const users = sequelize.define("Users", {
+const Users = (sequelize, DataTypes) => {
+    const Users = sequelize.define("Users", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: "não pode ser null"
+                },
+                notEmpty: {
+                    msg: "nome obrigatório"
+                }
+            }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: "email pode ser null"
+                },
+                notEmpty: {
+                    msg: "email obrigatório"
+                },
+                isEmail: {
+                    msg: "email invalido"
+                }
+            }
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: "senha pode ser null"
+                },
+                notEmpty: {
+                    msg: "senha obrigatório"
+                },
+                len: {
+                    args: [8,32],
+                    msg: "sua senha precisa ter entre 8 e 32 caracteres"
+                }
+            }
         },
     });
-    return users;
+    return Users;
 }
+
+module.exports = Users;

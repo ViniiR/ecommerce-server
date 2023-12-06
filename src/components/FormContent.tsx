@@ -1,6 +1,7 @@
 import { SubmitHandler, useFormContext, FieldValues } from "react-hook-form";
 import InputForm from "../components/InputForm";
 import { userSchema } from "../Validations/UserValidation";
+import axios from 'axios'
 
 function FormContent() {
 
@@ -23,12 +24,17 @@ function FormContent() {
         };
         const isValid = await userSchema.isValid(formData)
         if (isValid) {
-            console.log(isValid);
+            try {
+                const response = await axios.post('http://localhost:5000/user', data);
+                console.log(response.data);
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 
     return (
-        <form action="#" className="criar-conta-form" name="crie-conta"
+        <form method="POST" className="criar-conta-form" name="crie-conta"
             onSubmit={handleSubmit(submitForm)}
             noValidate
         >
