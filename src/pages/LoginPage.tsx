@@ -1,8 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../scss/loginPage.scss";
+import axios from "axios";
+import { FieldValues, useForm } from "react-hook-form";
+
+type UserLoginData = {
+    name?: string;
+    email?: string;
+    password: string;
+}
 
 function LoginPage() {
+
+    const {register, handleSubmit} = useForm()
+    const navigate = useNavigate()
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    const onSubmit = async (data: FieldValues) => {
+        const userData: UserLoginData = {
+            password: data.password
+        }
+        if (emailRegex.test(data.email)) {
+            userData.email = data.email
+        } else {
+            userData.name = data.email
+        }
+        try {
+            await axios.post('http://localhost:5000/user/login', userData)
+            navigate('/bem-vindo')
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
         <>
             <main className="login-page">
@@ -10,12 +41,16 @@ function LoginPage() {
                     <img src={logo} alt="" />
                 </header>
                 <main>
-                    <form action="#" id="telefone-email" name="telefone-email" method="POST">
-                        <label htmlFor="telefone-email" id="form-title">Olá! digite o seu telefone, e-mail ou usuário</label>
+                    <form onSubmit={handleSubmit(onSubmit)} id="telefone-email" name="telefone-email" method="POST" noValidate>
+                        <label htmlFor="telefone-email" id="form-title">Olá! digite o seu e-mail ou usuário e senha</label>
                         <section className="form-wrapper">
                             <section className="email-wrapper">
-                                <label htmlFor="input-email" id="telefone-usuario">Telefone, e-mail ou usuário</label>
-                                <input type="email" name="input-email" id="input-email" />
+                                <label htmlFor="email" id="telefone-usuario">E-mail ou usuário</label>
+                                <input type="text" id="email" {...register('email')} />
+
+                                <label htmlFor="password" id="password-login-input">Senha</label>
+                                <input type="password" id="password" {...register('password')} />
+
                             </section>
                             <section className="low-buttons-wrapper">
                                 <input type="submit" value="Continuar" id="continuar-button" />

@@ -25,6 +25,7 @@ function App() {
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
+                    <Route path="/bem-vindo" element={<Teste></Teste>}></Route>
                     {/* <Route path="/" element={token ? <Teste></Teste> : <CriarContaPage></CriarContaPage>}></Route> */}
                 </Routes>
             </BrowserRouter>

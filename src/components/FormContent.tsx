@@ -2,10 +2,12 @@ import { SubmitHandler, useFormContext, FieldValues } from "react-hook-form";
 import InputForm from "../components/InputForm";
 import { userSchema } from "../Validations/UserValidation";
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function FormContent() {
 
     const {handleSubmit} = useFormContext()
+    const navigate = useNavigate()
 
     const submitForm: SubmitHandler<FieldValues> = async (event) => {
         try {
@@ -22,13 +24,15 @@ function FormContent() {
             email: data.email,
             password: data.password,
         };
+
         const isValid = await userSchema.isValid(formData)
+
         if (isValid) {
             try {
-                const response = await axios.post('http://localhost:5000/user', data);
-                console.log(response.data);
+                await axios.post('http://localhost:5000/user', data);
+                navigate('/bem-vindo')
             } catch (err) {
-                console.log(err);
+                console.error(err);
             }
         }
     }
@@ -48,15 +52,3 @@ function FormContent() {
 }
 
 export default FormContent;
-
-// event.preventDefault()
-
-        // const target = event.target as HTMLFormElement;
-        
-        // const formData: DataForm = {
-        //     name: (target[0] as HTMLInputElement).value,
-        //     email: (target[1] as HTMLInputElement).value,
-        //     password: (target[2] as HTMLInputElement).value,
-        // };
-        // const isValid = await userSchema.isValid(formData);
-        // console.log(isValid);

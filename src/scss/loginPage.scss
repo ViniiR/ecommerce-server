@@ -34,11 +34,11 @@
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
-                    >#telefone-usuario {
+                    > label {
                         padding: 0px 5px;
                         font-size: .9rem;
                     }
-                    > #input-email {
+                    > input {
                         height: 40px;
                         border-radius: 5px;
                         border: 1px solid rgba(27, 27, 27, 0.199);

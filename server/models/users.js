@@ -39,8 +39,8 @@ const Users = (sequelize, DataTypes) => {
                     msg: "senha obrigatório"
                 },
                 len: {
-                    args: [8,32],
-                    msg: "sua senha precisa ter entre 8 e 32 caracteres"
+                    args: [8,255],
+                    msg: "sua senha precisa ter no minimo 8 caracteres"
                 }
             }
         },
