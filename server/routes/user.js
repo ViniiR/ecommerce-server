@@ -24,12 +24,11 @@ router.post('/login', async (req, res) => {
 
     try {
         const user = hasEmailOnly(req.body) ? await Users.findOne({where: {email: req.body.email}}) : await Users.findOne({where: {name: req.body.name}});
-        console.log(user);
         if (user == null) {
             return res.status(400).send('User not found')
         }
         if (await bcrypt.compare(req.body.password, user.password)) {
-            res.send('success')
+            res.status(201).send('success')
         } else {
             res.send('failed :(')
         }

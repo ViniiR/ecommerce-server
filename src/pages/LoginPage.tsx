@@ -27,8 +27,10 @@ function LoginPage() {
             userData.name = data.email
         }
         try {
-            await axios.post('http://localhost:5000/user/login', userData)
-            navigate('/bem-vindo')
+            const res = await axios.post('http://localhost:5000/user/login', userData)
+            if (res.status === 201) {
+                navigate('/bem-vindo')
+            }
         } catch (err) {
             console.error(err);
         }
