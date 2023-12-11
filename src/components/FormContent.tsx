@@ -20,9 +20,9 @@ function FormContent() {
     async function createUser(data: FieldValues) {
 
         const formData: DataForm = {
-            name: data.name,
-            email: data.email,
-            password: data.password,
+            name: data.name.trim(),
+            email: data.email.trim(),
+            password: data.password.trim(),
         };
 
         const isValid = await userSchema.isValid(formData)

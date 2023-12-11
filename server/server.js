@@ -9,8 +9,10 @@ app.use(express.json())
 app.use(cors())
 
 const userRouter = require('./routes/user')
+const authTokenRouter = require('./routes/authToken')
 
 app.use("/user", userRouter)
+app.use('/auth-token', authTokenRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(port, () => {

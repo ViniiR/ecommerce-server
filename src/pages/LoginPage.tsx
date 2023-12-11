@@ -3,38 +3,56 @@ import logo from "../assets/logo.png";
 import "../scss/loginPage.scss";
 import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 type UserLoginData = {
     name?: string;
     email?: string;
     password: string;
-}
+};
 
 function LoginPage() {
-
-    const {register, handleSubmit} = useForm()
-    const navigate = useNavigate()
+    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const onSubmit = async (data: FieldValues) => {
         const userData: UserLoginData = {
-            password: data.password
-        }
+            password: data.password.trim(),
+        };
         if (emailRegex.test(data.email)) {
-            userData.email = data.email
+            userData.email = data.email.trim();
         } else {
-            userData.name = data.email
+            userData.name = data.email.trim();
+        }
+        if (userData.password == "" || userData.name == "") {
+            return;
         }
         try {
-            const res = await axios.post('http://localhost:5000/user/login', userData)
+            const res = await axios.post("http://localhost:5000/user/login", userData);
+            localStorage.setItem("loginToken", res.data.accessToken);
             if (res.status === 201) {
-                navigate('/bem-vindo')
+                navigate("/");
             }
         } catch (err) {
             console.error(err);
         }
-    }
+    };
+
+    useEffect(() => {
+        const handleNavigation = (event: Event) => {
+            if (event.type === "popstate") {
+                navigate("/");
+            }
+        };
+
+        window.addEventListener("popstate", handleNavigation);
+
+        return () => {
+            window.removeEventListener("popstate", handleNavigation);
+        };
+    }, [navigate]);
 
     return (
         <>
@@ -44,19 +62,26 @@ function LoginPage() {
                 </header>
                 <main>
                     <form onSubmit={handleSubmit(onSubmit)} id="telefone-email" name="telefone-email" method="POST" noValidate>
-                        <label htmlFor="telefone-email" id="form-title">Olá! digite o seu e-mail ou usuário e senha</label>
+                        <label htmlFor="telefone-email" id="form-title">
+                            Olá! digite o seu e-mail ou usuário e senha
+                        </label>
                         <section className="form-wrapper">
                             <section className="email-wrapper">
-                                <label htmlFor="email" id="telefone-usuario">E-mail ou usuário</label>
-                                <input type="text" id="email" {...register('email')} />
+                                <label htmlFor="email" id="telefone-usuario">
+                                    E-mail ou usuário
+                                </label>
+                                <input type="text" id="email" {...register("email")} />
 
-                                <label htmlFor="password" id="password-login-input">Senha</label>
-                                <input type="password" id="password" {...register('password')} />
-
+                                <label htmlFor="password" id="password-login-input">
+                                    Senha
+                                </label>
+                                <input type="password" id="password" {...register("password")} />
                             </section>
                             <section className="low-buttons-wrapper">
                                 <input type="submit" value="Continuar" id="continuar-button" />
-                                <Link to="/crie-sua-conta" id="criar-conta-button">Criar conta</Link>
+                                <Link to="/crie-sua-conta" id="criar-conta-button">
+                                    Criar conta
+                                </Link>
                             </section>
                         </section>
                     </form>
@@ -76,16 +101,22 @@ function LoginPage() {
                                         </svg>
                                         <span>Roubo ou perda de celular</span>
                                     </section>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"></path>
+                                    </svg>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
                                     <section className="not-chevron-wrapper">
-                                        <svg className="not-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
+                                        <svg className="not-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path>
+                                        </svg>
                                         <span>Roubo de conta</span>
                                     </section>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"></path>
+                                    </svg>
                                 </a>
                             </li>
                         </ul>

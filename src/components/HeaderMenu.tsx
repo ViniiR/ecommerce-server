@@ -1,9 +1,76 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import "../scss/headerMenu.scss";
 import { Link } from "react-router-dom";
+import isValidToken from "../isValidToken";
+
+function WelcomeMenu() {
+    return(
+        <header>
+            <section id="welcome-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
+                </svg>
+                <section>
+                    <h2>Bem-vindo</h2>
+                    <p>Entre na sua conta para ver suas compras, favoritos etc.</p>
+                </section>
+            </section>
+            <section id="entre-crie-conta-buttons-section">
+                <Link to="/login" id="entre-btn">Entre</Link>
+                <Link to='/crie-sua-conta' id="crie-sua-conta-btn">Crie a sua conta</Link>
+            </section>
+        </header>
+    )
+}
+
+function UserInformation(userName: string, handleLogoff: MouseEventHandler<HTMLButtonElement>) {
+    return(
+        <header>
+            <section id="welcome-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
+                </svg>
+                <section>
+                    <h2>{userName}</h2>
+                    <p>Olá, {userName}</p>
+                </section>
+            </section>
+            <section id="entre-crie-conta-buttons-section">
+                <button id="logoff-button" onClick={handleLogoff}>Log Off</button>
+            </section>
+        </header>
+    )
+}
 
 function HeaderMenu() {
     const [content, setContent] = useState<UlData[][]>([]);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+    const [userInfo, setUserInfo] = useState<string>('')
+    const [isLoading, setIsLoading] = useState(true)
+
+    function handleLogoff() {
+        localStorage.removeItem('loginToken');
+
+    }
+
+    useEffect(() => {
+        async function verify() {
+            try {
+                const res = await isValidToken();
+                setIsUserLoggedIn(res.isValidToken)
+                setUserInfo(res.userName)
+                if (isUserLoggedIn && userInfo) {
+                    setIsLoading(false)
+                }
+                if (!res.isValidToken) {
+                    setIsLoading(false)
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        verify()
+    }, [isUserLoggedIn, userInfo]);
 
     useEffect(() => {
         async function fetchData() {
@@ -113,60 +180,48 @@ function HeaderMenu() {
 
     }, []);
 
-    return (
-        <>
-            <menu id="header-menu">
-                <header>
-                    <section id="welcome-menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
-                        </svg>
+    if (!isLoading) {
+        return (
+            <>
+                <menu id="header-menu">
+                    {isUserLoggedIn ?  UserInformation(userInfo, handleLogoff) : WelcomeMenu()}
+                    <main>
+                        {
+                            content.map((dataNode, index) => (
+                                <section key={index}>
+                                    <ul>
+                                        {
+                                            dataNode.map((dataObject, index) => (
+                                                <li key={index}>
+                                                    <a href="#">
+                                                        {dataObject.icon}
+                                                        <span> {dataObject.name} </span>
+                                                    </a>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                    <hr/>
+                                </section>
+                            ))
+                        }
                         <section>
-                            <h2>Bem-vindo</h2>
-                            <p>Entra na sua conta para ver suas compras, favoritos etc.</p>
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path d="M19 9h-4V3H9v6H5l7 8zM4 19h16v2H4z"></path>
+                                        </svg>
+                                        <span>Compre e venda com o app!</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </section>
-                    </section>
-                    <section id="entre-crie-conta-buttons-section">
-                        <Link to="/login" id="entre-btn">Entre</Link>
-                        <a id="crie-sua-conta-btn">Crie a sua conta</a>
-                    </section>
-                </header>
-                <main>
-                    {
-                        content.map((dataNode, index) => (
-                            <section key={index}>
-                                <ul>
-                                    {
-                                        dataNode.map((dataObject, index) => (
-                                            <li key={index}>
-                                                <a href="#">
-                                                    {dataObject.icon}
-                                                    <span> {dataObject.name} </span>
-                                                </a>
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
-                                <hr/>
-                            </section>
-                        ))
-                    }
-                    <section>
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                        <path d="M19 9h-4V3H9v6H5l7 8zM4 19h16v2H4z"></path>
-                                    </svg>
-                                    <span>Compre e venda com o app!</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </section>
-                </main>
-            </menu>
-        </>
-    );
+                    </main>
+                </menu>
+            </>
+        );
+    }
 }
 
 export default HeaderMenu;

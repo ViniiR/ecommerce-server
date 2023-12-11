@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Ofertas from "./components/Ofertas";
 import Frete from "./components/Frete";
 import CarrouselVarious from "./components/CarrouselVarious";
@@ -12,23 +12,25 @@ import FourProducts from "./components/FourProducts";
 import MobileHeader from "./components/MobileHeader";
 import LoginPage from "./pages/LoginPage";
 import CriarContaPage from "./pages/CriarContaPage";
-import { useState } from "react";
-import Teste from "./pages/testelogin";
+import BemVindo from "./components/BemVindo";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import CarrinhoDeCompras from "./pages/CarrinhoDeCompras";
 
 function App() {
-    const [token, setToken] = useState();
 
     return (
         <div className="App">
-            <BrowserRouter>
+            <Router>
                 <Routes>
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
-                    <Route path="/bem-vindo" element={<Teste></Teste>}></Route>
-                    {/* <Route path="/" element={token ? <Teste></Teste> : <CriarContaPage></CriarContaPage>}></Route> */}
+                    <Route path="/bem-vindo" element={<BemVindo ></BemVindo>}></Route>
+                    <Route element={<ProtectedRoutes/>}>
+                        <Route element={<CarrinhoDeCompras/>} path="/carrinho"></Route>
+                    </Route>
                 </Routes>
-            </BrowserRouter>
+            </Router>
         </div>
     );
 }
