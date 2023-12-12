@@ -6,8 +6,11 @@
         display: flex;
         align-items: center;
         padding: 5px 10px;
-        > img {
+        > a {
             width: 50px;
+            > img {
+                width: 50px;
+            }
         }
     }
     .crie-conta-main {
@@ -53,6 +56,12 @@
                     font-size: .8rem;
                     padding-left: 10px;
                 }
+            }
+            > #duplicate-name-email-error {
+                color: red;
+                font-size: .8rem;
+                height: 15px;
+                padding-left: 10px;
             }
             > input {
                 cursor: pointer;

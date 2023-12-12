@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import "../scss/loginPage.scss";
 import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type UserLoginData = {
     name?: string;
@@ -14,10 +14,12 @@ type UserLoginData = {
 function LoginPage() {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
 
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const onSubmit = async (data: FieldValues) => {
+        setErrorMessage("");
         const userData: UserLoginData = {
             password: data.password.trim(),
         };
@@ -31,12 +33,13 @@ function LoginPage() {
         }
         try {
             const res = await axios.post("http://localhost:5000/user/login", userData);
-            localStorage.setItem("loginToken", res.data.accessToken);
             if (res.status === 201) {
                 navigate("/");
+                localStorage.setItem("loginToken", res.data.accessToken);
             }
         } catch (err) {
             console.error(err);
+            setErrorMessage("Usuário não encontrado");
         }
     };
 
@@ -58,7 +61,9 @@ function LoginPage() {
         <>
             <main className="login-page">
                 <header className="login-header">
-                    <img src={logo} alt="" />
+                    <a href="/">
+                        <img src={logo} alt="" />
+                    </a>
                 </header>
                 <main>
                     <form onSubmit={handleSubmit(onSubmit)} id="telefone-email" name="telefone-email" method="POST" noValidate>
@@ -77,6 +82,7 @@ function LoginPage() {
                                 </label>
                                 <input type="password" id="password" {...register("password")} />
                             </section>
+                            <p id="error-paragraph-login">{errorMessage}</p>
                             <section className="low-buttons-wrapper">
                                 <input type="submit" value="Continuar" id="continuar-button" />
                                 <Link to="/crie-sua-conta" id="criar-conta-button">

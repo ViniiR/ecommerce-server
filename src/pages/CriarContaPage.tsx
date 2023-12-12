@@ -8,7 +8,9 @@ function CriarContaPage() {
         <>
             <section className="crie-conta-main-wrapper">
                 <header className="crie-conta-header">
-                    <img src={logo} alt="" />
+                    <a href="/">
+                        <img src={logo} alt="" />
+                    </a>
                 </header>
                 <main className="crie-conta-main">
                     <Form/>

@@ -11,7 +11,8 @@ const Users = (sequelize, DataTypes) => {
                 notEmpty: {
                     msg: "nome obrigatório"
                 }
-            }
+            },
+            unique: true
         },
         email: {
             type: DataTypes.STRING,
@@ -26,7 +27,8 @@ const Users = (sequelize, DataTypes) => {
                 isEmail: {
                     msg: "email invalido"
                 }
-            }
+            },
+            unique: true
         },
         password: {
             type: DataTypes.STRING,

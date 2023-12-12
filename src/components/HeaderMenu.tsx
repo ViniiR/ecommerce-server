@@ -45,12 +45,13 @@ function UserInformation(userName: string, handleLogoff: MouseEventHandler<HTMLB
 function HeaderMenu() {
     const [content, setContent] = useState<UlData[][]>([]);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-    const [userInfo, setUserInfo] = useState<string>('')
+    const [userName, setUserName] = useState<string>('')
     const [isLoading, setIsLoading] = useState(true)
 
     function handleLogoff() {
         localStorage.removeItem('loginToken');
-
+        setUserName('')
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -58,8 +59,8 @@ function HeaderMenu() {
             try {
                 const res = await isValidToken();
                 setIsUserLoggedIn(res.isValidToken)
-                setUserInfo(res.userName)
-                if (isUserLoggedIn && userInfo) {
+                setUserName(res.userName)
+                if (isUserLoggedIn && userName) {
                     setIsLoading(false)
                 }
                 if (!res.isValidToken) {
@@ -69,8 +70,8 @@ function HeaderMenu() {
                 console.error(err);
             }
         }
-        verify()
-    }, [isUserLoggedIn, userInfo]);
+        verify();
+    }, [isUserLoggedIn, userName]);
 
     useEffect(() => {
         async function fetchData() {
@@ -184,7 +185,7 @@ function HeaderMenu() {
         return (
             <>
                 <menu id="header-menu">
-                    {isUserLoggedIn ?  UserInformation(userInfo, handleLogoff) : WelcomeMenu()}
+                    {isUserLoggedIn ?  UserInformation(userName, handleLogoff) : WelcomeMenu()}
                     <main>
                         {
                             content.map((dataNode, index) => (

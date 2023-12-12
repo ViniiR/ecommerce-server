@@ -3,11 +3,13 @@ import InputForm from "../components/InputForm";
 import { userSchema } from "../Validations/UserValidation";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
 
 function FormContent() {
 
     const {handleSubmit} = useFormContext()
     const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState('')
 
     const submitForm: SubmitHandler<FieldValues> = async (event) => {
         try {
@@ -32,6 +34,7 @@ function FormContent() {
                 await axios.post('http://localhost:5000/user', data);
                 navigate('/bem-vindo')
             } catch (err) {
+                setErrorMessage('Nome ou Email já estão em uso')
                 console.error(err);
             }
         }
@@ -46,6 +49,7 @@ function FormContent() {
             <InputForm label="Nome" type="text" name="name" id="nome-conta" />
             <InputForm label="E-mail" type="email" name="email" id="email-conta" />
             <InputForm label="Senha" type="password" name="password" id="password" />
+            <p id="duplicate-name-email-error">{errorMessage}</p>
             <input id="submit" type="submit" />
         </form>
     );
