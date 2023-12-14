@@ -32,7 +32,7 @@ function FormContent() {
         if (isValid) {
             try {
                 await axios.post('http://localhost:5000/user', data);
-                navigate('/bem-vindo')
+                navigate('/')
             } catch (err) {
                 setErrorMessage('Nome ou Email já estão em uso')
                 console.error(err);

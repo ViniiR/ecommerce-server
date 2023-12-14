@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../scss/crieConta.scss'
 
 function CrieConta() {
@@ -7,11 +8,11 @@ function CrieConta() {
             <section className="crie-conta-wrapper">
                 <section className="crie-conta-container">
                     <h2>Crie uma conta para melhorar sua experiência!</h2>
-                    <button className="criar-conta-button">
+                    <Link to='/crie-sua-conta' className="criar-conta-button">
                         Criar conta
-                    </button>
+                    </Link>
                     <p>
-                        Já tem uma conta? <a className="entrar-blue-link">Entrar</a>
+                        Já tem uma conta? <Link to='/login' className="entrar-blue-link">Entrar</Link>
                     </p>
                 </section>
             </section>

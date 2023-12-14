@@ -36,6 +36,7 @@ function LoginPage() {
             if (res.status === 201) {
                 navigate("/");
                 localStorage.setItem("loginToken", res.data.accessToken);
+                localStorage.setItem('isLoginForAd', 'yes')
             }
         } catch (err) {
             console.error(err);

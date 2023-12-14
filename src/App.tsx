@@ -12,7 +12,6 @@ import FourProducts from "./components/FourProducts";
 import MobileHeader from "./components/MobileHeader";
 import LoginPage from "./pages/LoginPage";
 import CriarContaPage from "./pages/CriarContaPage";
-import BemVindo from "./components/BemVindo";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import CarrinhoDeCompras from "./pages/CarrinhoDeCompras";
 
@@ -25,7 +24,6 @@ function App() {
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
-                    <Route path="/bem-vindo" element={<BemVindo ></BemVindo>}></Route>
                     <Route element={<ProtectedRoutes/>}>
                         <Route element={<CarrinhoDeCompras/>} path="/carrinho"></Route>
                     </Route>
@@ -44,7 +42,7 @@ function HomePage() {
                 <Frete></Frete>
                 <CarrouselVarious></CarrouselVarious>
                 <CarrouselAndes></CarrouselAndes>
-                <CrieConta></CrieConta>
+                {localStorage.getItem('isLoginForAd') ? <></> : <CrieConta></CrieConta>}
                 <MeliPlus></MeliPlus>
                 <SingleProduct></SingleProduct>
                 <FourProducts></FourProducts>

@@ -26,6 +26,9 @@
             border-radius: 5px;
             color: white;
             font-size: 1rem;
+            text-decoration: none;
+            display: grid;
+            place-items: center;
         }
         > p {
             color: rgb(81, 81, 81);

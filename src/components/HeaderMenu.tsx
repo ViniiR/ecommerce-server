@@ -51,10 +51,13 @@ function HeaderMenu() {
     function handleLogoff() {
         localStorage.removeItem('loginToken');
         setUserName('')
+        localStorage.removeItem('isLoginForAd')
         window.location.reload()
     }
 
     useEffect(() => {
+        console.log(localStorage.getItem('isLoginForAd'));
+
         async function verify() {
             try {
                 const res = await isValidToken();
