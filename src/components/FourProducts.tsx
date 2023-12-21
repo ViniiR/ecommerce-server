@@ -1,53 +1,88 @@
 import { useEffect, useState } from 'react';
 import '../scss/fourProducts.scss'
+import axios from 'axios';
+
+type ResponseData = {
+    data: [
+        {
+            title: string;
+            price: string;
+            oldPrice: string;
+            percentOFF: string;
+            dividedPrice: string;
+            imagePath: string;
+        }
+    ]
+};
 
 function FourProducts() {
+    //const [content, setContent] = useState<SPData[]>([])
     const [content, setContent] = useState<SPData[]>([])
 
     useEffect(() => {
-        async function fetchData() {
-            const data: SPData[] = [
-                {
-                    image: await import('../assets/D_Q_NP_2X_629974-MLU72755866665_112023-T.webp'),
-                    title: 'Notebook Aspire 5 A315-57-57T3 i5 8GB RAM 512GB SSD',
-                    price: '2.499',
-                    oldPrice: '5.582',
-                    percentOFF: '58',
-                    dividedPrice: '249,99',
-                },
-                {
-                    image: await import('../assets/D_Q_NP_2X_855430-MLU72675476336_112023-T.webp'),
-                    title: 'Caixa De Som Boombox 3 Bluetooth Preta jbl Bivolt',
-                    price: '2.129',
-                    oldPrice: '3.299',
-                    percentOFF: '35',
-                    dividedPrice: '212,90',
-                },
-                {
-                    image: await import('../assets/D_Q_NP_2X_928869-MLU69966645745_062023-V.webp'),
-                    title: 'Smartphone E22 128GB 4g 6,5 HD+ Câmera Dupla 16MP',
-                    price: '718',
-                    oldPrice: '999',
-                    percentOFF: '28',
-                    dividedPrice: '71,80',
-                },
-                {
-                    image: await import('../assets/D_Q_NP_2X_889330-MLU72821325449_112023-T.webp'),
-                    title: 'Micro-ondas Panasonic 21| 700w Branco Espelhado',
-                    price: '529',
-                    oldPrice: '739',
-                    percentOFF: '28',
-                    dividedPrice: '52,90',
-                },
-            ];
+        async function fetchProductsData() {
+            const res: ResponseData = await axios.get('http://localhost:5000/retrieve-data');
+            const data = res.data
 
-            setContent(data)
+            const updatedData = await Promise.all(data.map(async (obj) => ({
+                title: obj.title,
+                price: obj.price,
+                oldPrice: obj.oldPrice,
+                percentOFF: obj.percentOFF,
+                dividedPrice: obj.dividedPrice,
+                image: await import(/* @vite-ignore */obj.imagePath),
+            })));
+            setContent(updatedData)
 
         }
 
-        fetchData()
+        fetchProductsData()
+    }, []);
 
-    }, [])
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const data: SPData[] = [
+    //             {
+    //                 image: await import('../assets/D_Q_NP_2X_629974-MLU72755866665_112023-T.webp'),
+    //                 title: 'Notebook Aspire 5 A315-57-57T3 i5 8GB RAM 512GB SSD',
+    //                 price: '2.499',
+    //                 oldPrice: '5.582',
+    //                 percentOFF: '58',
+    //                 dividedPrice: '249,99',
+    //             },
+    //             {
+    //                 image: await import('../assets/D_Q_NP_2X_855430-MLU72675476336_112023-T.webp'),
+    //                 title: 'Caixa De Som Boombox 3 Bluetooth Preta jbl Bivolt',
+    //                 price: '2.129',
+    //                 oldPrice: '3.299',
+    //                 percentOFF: '35',
+    //                 dividedPrice: '212,90',
+    //             },
+    //             {
+    //                 image: await import('../assets/D_Q_NP_2X_928869-MLU69966645745_062023-V.webp'),
+    //                 title: 'Smartphone E22 128GB 4g 6,5 HD+ Câmera Dupla 16MP',
+    //                 price: '718',
+    //                 oldPrice: '999',
+    //                 percentOFF: '28',
+    //                 dividedPrice: '71,80',
+    //             },
+    //             {
+    //                 image: await import('../assets/D_Q_NP_2X_889330-MLU72821325449_112023-T.webp'),
+    //                 title: 'Micro-ondas Panasonic 21| 700w Branco Espelhado',
+    //                 price: '529',
+    //                 oldPrice: '739',
+    //                 percentOFF: '28',
+    //                 dividedPrice: '52,90',
+    //             },
+    //         ];
+
+    //         setContent(data)
+
+    //     }
+
+    //     fetchData()
+
+    // }, [])
 
     return (
         <>

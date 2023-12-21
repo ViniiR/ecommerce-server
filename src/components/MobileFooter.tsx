@@ -35,7 +35,7 @@ function MobileFooter() {
                             Termos e condições Como cuidamos da sua privacidade Acessibilidade Informações sobre seguros Blog Afiliados Tendências
                         </p>
                         <p className="ltda-paragraph">
-                            © 2004-1231912246147212361254612985173521532163521963125631293216312351269416512735217532752749146 Vinii.com.br LTDA.
+                            © 2004-123191224614721236125461298517352153216352196312563129321631235126941651273521753275274987391263179236217836146 Vinii.com.br LTDA.
                         </p>
                         <p className="faded-terms">
                             CNPJ n.º 00.000.0/0000-0 / Av. do sla, nº 19, nsei, Brasil - CEP 12345-123 - empresa do grupo Loja Top&trade;.

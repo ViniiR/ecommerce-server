@@ -10,12 +10,14 @@ app.use(cors())
 
 const userRouter = require('./routes/user')
 const authTokenRouter = require('./routes/authToken')
+const productsDataRouter = require('./routes/retrieveProductsData')
 
 app.use("/user", userRouter)
 app.use('/auth-token', authTokenRouter)
+app.use('/retrieve-data', productsDataRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(port, () => {
-        console.log("server is running at localhost:", port);
+        console.log(`server is running at localhost`, port);
     });
 });
