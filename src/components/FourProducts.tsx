@@ -21,7 +21,7 @@ function FourProducts() {
 
     useEffect(() => {
         async function fetchProductsData() {
-            const res: ResponseData = await axios.get('http://localhost:5000/retrieve-data');
+            const res: ResponseData = await axios.get(`http://localhost:5000/retrieve-data`);
             const data = res.data
 
             const updatedData = await Promise.all(data.map(async (obj) => ({
@@ -33,9 +33,7 @@ function FourProducts() {
                 image: await import(/* @vite-ignore */obj.imagePath),
             })));
             setContent(updatedData)
-
         }
-
         fetchProductsData()
     }, []);
 

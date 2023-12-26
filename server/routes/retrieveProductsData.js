@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 // const {productsData} = require("../models");
+//TODO: try to require ./models and use it instead of sequelize
 const Sequelize = require("sequelize");
+const db = require('../models')
 const sequelize = new Sequelize({
     username: "root",
     password: "13152569",
@@ -50,7 +52,7 @@ const getRandomProducts = async () => {
             ORDER BY RAND()
             LIMIT 4;`;
 
-        const randomProducts = await sequelize.query(query, {
+        const randomProducts = await db.sequelize.query(query, {
             type: Sequelize.QueryTypes.SELECT,
         });
 
@@ -73,8 +75,8 @@ router.get("/", async (req, res) => {
             dividedPrice: product.dividedPrice,
         }));
         res.status(200).json(productsInfo);
-    } catch (error) {
-        console.error("Error:", error);
+    } catch (err) {
+        console.error("Error:", err);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });

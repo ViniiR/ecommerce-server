@@ -1,6 +1,6 @@
 
 const ProductsData = (sequelize, DataTypes) => {
-    const productsData = sequelize.define('productsData', {
+    const ProductsData = sequelize.define('productsData', {
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -26,7 +26,7 @@ const ProductsData = (sequelize, DataTypes) => {
             allowNull: false
         }
     });
-    return productsData;
+    return ProductsData;
 };
 
 module.exports = ProductsData;

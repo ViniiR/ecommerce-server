@@ -11,10 +11,12 @@ app.use(cors())
 const userRouter = require('./routes/user')
 const authTokenRouter = require('./routes/authToken')
 const productsDataRouter = require('./routes/retrieveProductsData')
+const queryDataRouter = require('./routes/queryData')
 
 app.use("/user", userRouter)
 app.use('/auth-token', authTokenRouter)
 app.use('/retrieve-data', productsDataRouter)
+app.use('/query-data', queryDataRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(port, () => {

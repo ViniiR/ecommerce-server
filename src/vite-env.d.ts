@@ -38,17 +38,26 @@ type SPData = {
     dividedPrice: string;
 };
 
+type UnresolvedSPData = {
+    title: string;
+    price: string;
+    oldPrice: string;
+    percentOFF: number;
+    dividedPrice: string;
+    imagePath: string;
+};
+
 type UlData = {
-    icon: ReactElement,
-    name: string
-}
+    icon: ReactElement;
+    name: string;
+};
 
 type InputProps = {
     label: string;
     id: string;
     name: string;
     type: string;
-}
+};
 
 type DataForm = {
     name: string;
