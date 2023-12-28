@@ -12,11 +12,13 @@ const userRouter = require('./routes/user')
 const authTokenRouter = require('./routes/authToken')
 const productsDataRouter = require('./routes/retrieveProductsData')
 const queryDataRouter = require('./routes/queryData')
+const searchProductsRouter = require('./routes/searchProducts')
 
 app.use("/user", userRouter)
 app.use('/auth-token', authTokenRouter)
 app.use('/retrieve-data', productsDataRouter)
 app.use('/query-data', queryDataRouter)
+app.use('/search-products', searchProductsRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(port, () => {

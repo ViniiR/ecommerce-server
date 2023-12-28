@@ -1,7 +1,7 @@
 import { MouseEventHandler, useEffect, useState } from "react";
 import "../scss/headerMenu.scss";
 import { Link } from "react-router-dom";
-import isValidToken from "../isValidToken";
+import { isValidToken } from "../utils/utils";
 
 function WelcomeMenu() {
     return(
@@ -23,13 +23,17 @@ function WelcomeMenu() {
     )
 }
 
-function UserInformation(userName: string, handleLogoff: MouseEventHandler<HTMLButtonElement>) {
+async function getRandomProfilePicture() {
+    const number = Math.floor(Math.random() * 4) + 1;
+    const image = await import(/* @vite-ignore */`../assets/untitled${number}.png`)
+    return image.default;
+}
+
+function UserInformation(userName: string, handleLogoff: MouseEventHandler<HTMLButtonElement>, picture: string) {
     return(
         <header>
             <section id="welcome-menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
-                </svg>
+                <img src={picture} alt="" />
                 <section>
                     <h2>{userName}</h2>
                     <p>Olá, {userName}</p>
@@ -46,6 +50,7 @@ function HeaderMenu() {
     const [content, setContent] = useState<UlData[][]>([]);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
     const [userName, setUserName] = useState<string>('')
+    const [profilePicture, setProfilePicture] = useState<string>('')
     const [isLoading, setIsLoading] = useState(true)
 
     function handleLogoff() {
@@ -56,14 +61,14 @@ function HeaderMenu() {
     }
 
     useEffect(() => {
-        console.log(localStorage.getItem('isLoginForAd'));
-
         async function verify() {
             try {
                 const res = await isValidToken();
                 setIsUserLoggedIn(res.isValidToken)
                 setUserName(res.userName)
                 if (isUserLoggedIn && userName) {
+                    const profile = await getRandomProfilePicture()
+                    setProfilePicture(profile)
                     setIsLoading(false)
                 }
                 if (!res.isValidToken) {
@@ -188,7 +193,7 @@ function HeaderMenu() {
         return (
             <>
                 <menu id="header-menu">
-                    {isUserLoggedIn ?  UserInformation(userName, handleLogoff) : WelcomeMenu()}
+                    {isUserLoggedIn ?  UserInformation(userName, handleLogoff, profilePicture) : WelcomeMenu()}
                     <main>
                         {
                             content.map((dataNode, index) => (

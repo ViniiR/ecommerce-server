@@ -1,5 +1,6 @@
 import '../scss/mobileFooter.scss'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.svg'
+import { Link } from 'react-router-dom';
 
 function MobileFooter() {
     return (
@@ -25,10 +26,10 @@ function MobileFooter() {
                         <li><a href="#">Vender</a></li>
                     </ul>
                 </section>
-                <section className="crie-conta">
-                    <a href="">Entre</a>
-                    <a href="">Crie sua conta</a>
-                </section>
+                {localStorage.getItem('isLoginForAd') ? <></> : <section className="crie-conta">
+                    <Link to="/login">Entre</Link>
+                    <Link to="/crie-sua-conta">Crie sua conta</Link>
+                </section>}
                 <footer className="terms-conditions">
                     <small>
                         <p>
@@ -38,7 +39,7 @@ function MobileFooter() {
                             © 2004-123191224614721236125461298517352153216352196312563129321631235126941651273521753275274987391263179236217836146 Vinii.com.br LTDA.
                         </p>
                         <p className="faded-terms">
-                            CNPJ n.º 00.000.0/0000-0 / Av. do sla, nº 19, nsei, Brasil - CEP 12345-123 - empresa do grupo Loja Top&trade;.
+                            CNPJ n.º 00.000.0/0000-0 / Av. do sla, nº 19, n sei, Brasil - CEP 12345-123 - empresa do grupo Loja Top&trade;.
                         </p>
                     </small>
                 </footer>

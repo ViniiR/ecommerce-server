@@ -1,5 +1,5 @@
 import Form from '../Validations/Form.tsx';
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import "../scss/crieSuaContaPage.scss";
 
 function CriarContaPage() {

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 // const {productsData} = require("../models");
-//TODO: try to require ./models and use it instead of sequelize
 const Sequelize = require("sequelize");
 const db = require('../models')
 const sequelize = new Sequelize({

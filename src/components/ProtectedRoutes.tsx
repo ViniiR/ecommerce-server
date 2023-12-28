@@ -1,4 +1,4 @@
-import isValidToken from "../isValidToken";
+import { isValidToken } from "../utils/utils";
 import { useEffect, useState } from "react";
 import { Outlet, Navigate, useLocation } from "react-router-dom";
 

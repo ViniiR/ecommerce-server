@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import "../scss/loginPage.scss";
 import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
