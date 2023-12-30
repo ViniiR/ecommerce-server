@@ -5,7 +5,7 @@ async function loadImages() {
     const promises = [
         {
             image: import("../assets/home_row_mercado_pago_carousel_mobile.webp"),
-            title: "Mercado Pago",
+            title: "Mercado Top",
         },
         {
             image: import("../assets/home_row_ofertas_carousel_mobile.webp"),

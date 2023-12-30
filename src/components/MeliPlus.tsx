@@ -14,15 +14,15 @@ function MeliPlus() {
                 },
                 {
                     icon: await import('../assets/combo-widgetl6@2x.jpg'),
-                    description: 'Disney+ e Star+ sem custo',
+                    description: 'NotDisn+ e Estrela+ sem custo',
                 },
                 {
                     icon: await import('../assets/deezer-l6widget@2x.jpg'),
-                    description: '12 Meses grátis da Deezer Premium',
+                    description: '12 Meses grátis da Deznuts Premium',
                 },
                 {
                     icon: await import('../assets/ultrapasse-widget@2x.png'),
-                    description: '60% OFF no Ultrapasse e outros benefícios',
+                    description: '60% OFF no Lojapasse e outros benefícios',
                 },
             ];
 
@@ -50,7 +50,7 @@ function MeliPlus() {
                             Assine o
                         </p>
                         <div className='meli-plus-icon'>
-                            meli+
+                            V+
                         </div>
                     </section>
                     <section>
@@ -61,7 +61,7 @@ function MeliPlus() {
                 </header>
                 <main>
                     <p>
-                        Conte com os melhores benefícios no Mercado Livre e do Mercado Pago
+                        Conte com os melhores benefícios no Loja Top e do Mercado Top
                     </p>
                     <ul>
                         {
@@ -75,7 +75,7 @@ function MeliPlus() {
                     </ul>
                 </main>
                 <footer>
-                    <a href="">Assinar o Meli+</a>
+                    <a href="">Assinar o V+</a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>

@@ -12,20 +12,20 @@ function BeneficiosConteudo() {
                 {
                     background: await import('../assets/disney_star_widgetmulti_mobdsk_mlb_@2x.jpg'),
                     icon: await import('../assets/combo-widgetl6@2x.jpg'),
-                    title: 'Sem custo com Meli+',
-                    description: 'Disney+ e Star+',
+                    title: 'Sem custo com V+',
+                    description: 'NotDisn+ e Estrela+',
                 },
                 {
                     background: await import('../assets/HBOMax_widgetmulti_mobdsk_mlb_@2x.jpg'),
                     icon: await import('../assets/logoSquare@2x.png'),
                     title: 'Até 30% OFF',
-                    description: 'HBO Max',
+                    description: 'HEY Max',
                 },
                 {
                     background: await import('../assets/paramount_widgetmulti_mobdsk_brasil_@2x.jpg'),
                     icon: await import('../assets/paramount-logo-vdp-56-x-56-filled@2x.png'),
                     title: 'Até 30% OFF',
-                    description: 'Paramount+',
+                    description: 'Mountain+',
                 }
             ];
 

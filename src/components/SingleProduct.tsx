@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../scss/singleProduct.scss'
+import { Link } from 'react-router-dom';
 
 function SingleProduct() {
     const [content, setContent] = useState<SPData>()
@@ -51,12 +52,12 @@ function SingleProduct() {
                         Frete grátis FULL
                     </p>
                 </section>
-                <footer className='single-product-footer'>
-                    <a href="">Ver todas as ofertas</a>
+                <Link to="/search?q=allProducts" className='single-product-footer'>
+                    <p>Ver todas as ofertas</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>
-                </footer>
+                </Link>
             </section>
         </>
     );

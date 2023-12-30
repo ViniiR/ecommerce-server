@@ -10,6 +10,7 @@ type contentNode = {
     title: string;
     description: string;
     buttonText: string;
+    linkTo: string;
 };
 
 type meliPlusNode = {

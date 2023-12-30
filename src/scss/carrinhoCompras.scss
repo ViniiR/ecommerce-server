@@ -1,0 +1,16 @@
+@import './variables';
+
+.cart-page {
+    .cart-header {
+        background-color: $main-yellow;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        > a {
+            width: 50px;
+            > img {
+                width: 60px;
+            }
+        }
+    }
+}

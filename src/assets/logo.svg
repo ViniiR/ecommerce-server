@@ -7,9 +7,10 @@
    viewBox="0 0 79.374998 79.375"
    version="1.1"
    id="svg1"
-   inkscape:export-filename="bitmap.svg"
+   inkscape:export-filename="bitmapsla.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   sodipodi:docname="bitmap.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -90,35 +91,30 @@
     <ellipse
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.297673;filter:url(#filter52)"
        id="path3"
-       cx="40.468224"
-       cy="38.870533"
+       cx="39.804394"
+       cy="36.120384"
        rx="28.560286"
-       ry="18.860035" />
-    <ellipse
-       style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
-       id="path11-0"
-       cx="29.429295"
-       cy="52.618561"
-       rx="0.67497241"
-       ry="0.66076249" />
+       ry="18.860035"
+       transform="matrix(1.0586832,0,0,1.0876133,-1.8738905,-2.1142458)" />
     <text
        xml:space="preserve"
-       transform="matrix(1.1432456,-0.06423114,0.05391028,0.95954528,-58.352097,-65.787197)"
+       transform="matrix(1.2518273,-0.07511798,0.0590305,1.1221832,-66.463934,-86.586399)"
        id="text2"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect2);fill:#ff0000;fill-opacity:1"><tspan
          x="62.347656"
          y="111.16016"
-         id="tspan1">LOJA</tspan></text>
+         id="tspan3">LOJA</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(1.0568953,-0.08900464,0.08031339,0.94776267,-68.050531,-101.45083)"
+       transform="matrix(1.2591238,-0.09752318,0.09568072,1.038472,-88.937778,-120.60894)"
        id="text3"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect3);fill:#ff0000;fill-opacity:1"><tspan
          x="88.773438"
          y="167.31445"
-         id="tspan2">TOP</tspan></text>
+         id="tspan4">TOP</tspan></text>
     <g
-       id="g5">
+       id="g5"
+       transform="rotate(-3.3750017,-59.947883,24.464996)">
       <path
          style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
          d="m 24.167597,45.706094 7.975038,-0.109246 -0.436988,3.058917 h -7.428803 z"
@@ -131,13 +127,20 @@
          style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
          d="m 21.193939,42.934113 c 3.932895,2.512681 0.983223,8.412027 3.932895,8.521274 2.949673,0.109246 5.462355,0 5.462355,0 0,0 0.546235,-1.747954 -2.403435,-1.420212 -2.949672,0.327739 -3.05892,-0.218496 -3.05892,-0.218496 0,0 -0.546235,-6.991815 -1.638706,-7.101062 -1.092471,-0.109246 -2.075695,0.218496 -2.294189,0.218496 z"
          id="path4" />
+      <ellipse
+         style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
+         id="path11"
+         cx="25.926046"
+         cy="52.555485"
+         rx="0.67497241"
+         ry="0.66076249" />
+      <ellipse
+         style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
+         id="path11-0"
+         cx="29.429295"
+         cy="52.618561"
+         rx="0.67497241"
+         ry="0.66076249" />
     </g>
-    <ellipse
-       style="fill:#280b0b;fill-opacity:1;stroke-width:0.264583"
-       id="path11"
-       cx="25.926046"
-       cy="52.555485"
-       rx="0.67497241"
-       ry="0.66076249" />
   </g>
 </svg>

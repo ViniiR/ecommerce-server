@@ -7,7 +7,7 @@ const { productsData } = require("../models");
 router.get("/", async (req, res) => {
     try {
         const query = req.query.query;
-        if (query === 'xablau') {
+        if (query === 'allProducts') {
             const results = await productsData.findAll();
             const products = results.map(product => ({
                 title: product.title,

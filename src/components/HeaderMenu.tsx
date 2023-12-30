@@ -67,8 +67,10 @@ function HeaderMenu() {
                 setIsUserLoggedIn(res.isValidToken)
                 setUserName(res.userName)
                 if (isUserLoggedIn && userName) {
-                    const profile = await getRandomProfilePicture()
-                    setProfilePicture(profile)
+                    if (profilePicture === '') {
+                        const profile = await getRandomProfilePicture()
+                        setProfilePicture(profile)
+                    }
                     setIsLoading(false)
                 }
                 if (!res.isValidToken) {
@@ -79,7 +81,7 @@ function HeaderMenu() {
             }
         }
         verify();
-    }, [isUserLoggedIn, userName]);
+    }, [isUserLoggedIn, userName, profilePicture]);
 
     useEffect(() => {
         async function fetchData() {

@@ -1,0 +1,67 @@
+@import '../scss/variables';
+
+.cep-page {
+    .cep-header {
+        background-color: $main-yellow;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        > a {
+            width: 50px;
+            > img {
+                width: 60px;
+            }
+        }
+    }
+    .cep-body {
+        padding: 10px;
+        width: 90%;
+        margin: auto;
+        display: grid;
+        place-items: center;
+        min-height: 350px;
+        > form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .cep-title {
+                font-size: 1.5rem;
+                font-weight: normal;
+            }
+            .cep-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .cep-description {
+                    color: rgb(80, 80, 80);
+                }
+                label {
+                    color: rgb(51, 51, 51);
+                }
+                #cep-input {
+                    height: 40px;
+                    border-radius: 10px;
+                    padding-left: 10px;
+                    border: 2px solid rgb(166, 166, 166);
+                    &:hover {
+                        border: 2px solid $blue-shade;
+                    }
+                    &::placeholder {
+                        color: rgb(151, 151, 151);
+                    }
+                }
+                #input-submit {
+                    height: 30px;
+                    border-radius: 5px;
+                    border: 1px solid $blue-shade;
+                    background-color: $blue-shade;
+                    color: white;
+                    &:hover {
+                        background-color: white;
+                        color: $blue-shade;
+                    }
+                }
+            }
+        }
+    }
+}

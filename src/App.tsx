@@ -15,6 +15,7 @@ import CriarContaPage from "./pages/CriarContaPage";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import CarrinhoDeCompras from "./pages/CarrinhoDeCompras";
 import SearchPage from "./pages/SearchPage";
+import CepPage from "./pages/CepPage";
 
 function App() {
 
@@ -25,9 +26,10 @@ function App() {
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
-                    <Route path="/search" element={<SearchPage></SearchPage>}></Route>
-                    <Route element={<ProtectedRoutes/>}>
-                        <Route element={<CarrinhoDeCompras/>} path="/carrinho"></Route>
+                    <Route path="/search" element={<SearchPage />}></Route>
+                    <Route path="/cep" element={<CepPage />}></Route>
+                    <Route element={<ProtectedRoutes />}>
+                        <Route element={<CarrinhoDeCompras />} path="/carrinho"></Route>
                     </Route>
                 </Routes>
             </Router>
