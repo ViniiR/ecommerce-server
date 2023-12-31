@@ -34,8 +34,9 @@
                     height: 70%;
                     width: 45px;
                 }
-                > .input-results-root {
+                .input-results-root {
                     display: flex;
+                    border-top: 1px solid black;
                 }
             }
             #query-icon {
@@ -59,11 +60,10 @@
             .input-results-root {
                 position: absolute;
                 top: 60px;
+                left: 0px;
                 width: 100%;
                 background-color: white;
-                display: none;
                 > ul {
-                    border: 1px solid black;
                     border-bottom: none;
                     width: 100%;
                     display: flex;

@@ -18,7 +18,7 @@ function MeliPlus() {
                 },
                 {
                     icon: await import('../assets/deezer-l6widget@2x.jpg'),
-                    description: '12 Meses grátis da Deznuts Premium',
+                    description: '12 Meses grátis da Deznts Premium',
                 },
                 {
                     icon: await import('../assets/ultrapasse-widget@2x.png'),

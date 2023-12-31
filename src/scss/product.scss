@@ -1,0 +1,60 @@
+@import './variables';
+
+.product-full-page {
+    .product-body {
+        padding: 10px;
+        background-color: white;
+        width: 95%;
+        border-radius: 5px;
+        margin: auto;
+        > h1 {
+            font-size: 1.1rem;
+        }
+        .img-wrapper-full {
+            width: 100%;
+            > img {
+                width: 100%;
+            }
+        }
+        .prices-full-sect {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(232, 232, 232);
+            border-radius: 5px;
+            gap: 5px;
+            padding: 10px;
+            .full-old-price {
+                text-decoration: line-through;
+                color: gray;
+            }
+            .full-main-price {
+                > strong {
+                    font-size: 1.5rem;
+                }
+                > span {
+                    color: $brighter-green-shade;
+                    padding-left: 10px;
+                }
+            }
+            .full-divided-price {
+                > span {
+                    color: $green-shade;
+                }
+            }
+            > a {
+                text-decoration: none;
+                color: $blue-shade;
+            }
+            .oferta-do-dia-lie {
+                background-color: $blue-shade;
+                width: max-content;
+                padding: 3px 5px;
+                display: grid;
+                place-items: center;
+                border-radius: 5px;
+                color: white;
+                font-size: .8rem;
+            }
+        }
+    }
+}

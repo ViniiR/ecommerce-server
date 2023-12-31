@@ -32,10 +32,10 @@ function closeAnimation(spans: HTMLElement[]) {
 function MobileHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isInputFocused, setIsInputFocused] = useState(false);
-    const [queryData, setQueryData] = useState<SPData[]>([])
+    const [queryData, setQueryData] = useState<SPData[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
     const rootProductsRef = useRef<HTMLDivElement>(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     function toggleMenu() {
         setIsMenuOpen(!isMenuOpen);
@@ -48,10 +48,25 @@ function MobileHeader() {
     };
 
     function handleInputSubmit(event: FormEvent) {
-        event.preventDefault()
-        const target = (event.target as HTMLFormElement).querySelector('input') as HTMLInputElement
-        const query = target.value
-        navigate(`/search?q=${query}`)
+        event.preventDefault();
+        const target = (event.target as HTMLFormElement).querySelector("input") as HTMLInputElement;
+        const query = target.value;
+        navigate(`/search?q=${query}`);
+    }
+
+    function checkRoute() {
+        const href = window.location.href;
+        let count = 0;
+        for (let i = 0; i < href.length; ++i) {
+            if (href[i] === "/") {
+                count++;
+            }
+        }
+        if (count > 3) {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1);
+        }
     }
 
     useEffect(() => {
@@ -60,28 +75,34 @@ function MobileHeader() {
             const target = event.currentTarget as HTMLInputElement;
             const inputValue = target.value.trim();
             if (inputValue.length < 2) {
-                setQueryData([])
+                setQueryData([]);
                 return;
             }
-            
+
             retrieveQueryData(inputValue)
                 .then((data) => {
                     resolveImages(data).then((data) => {
-                        setQueryData(data)
-                    })
-                }).catch((err) => {
+                        setQueryData(data);
+                    });
+                })
+                .catch((err) => {
                     console.error(err);
                 });
-            
         }
         function focusHandler(event: FocusEvent) {
             event.stopPropagation();
             setIsInputFocused(true);
+            rootProductsRef.current!.style.display = 'flex'
             event.target!.removeEventListener("input", inputHandler);
             event.target!.addEventListener("input", inputHandler);
         }
         function blurHandler(event: Event) {
             event.stopPropagation();
+            setTimeout(() => {
+                if (rootProductsRef.current?.style) {
+                    rootProductsRef.current.style.display = 'none' 
+                }
+            }, 1);
             setIsInputFocused(false);
         }
         if (inputRef && inputRef.current) {
@@ -94,7 +115,7 @@ function MobileHeader() {
 
     useEffect(() => {
         if (queryData) {
-            rootProductsRef.current //
+            rootProductsRef.current; //
         }
     }, [queryData]);
 
@@ -103,7 +124,7 @@ function MobileHeader() {
             <header id="mobile-header">
                 <section className="header-wrapper">
                     <a href="/">
-                        <img src="./src/assets/logo.svg" alt="" id="logo" />
+                        <img src="/src/assets/logo.svg" alt="" id="logo" />
                     </a>
                     <div id="query-wrapper">
                         <div id="query-icon">
@@ -111,7 +132,7 @@ function MobileHeader() {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path>
                                 </svg>
-                                ) : (
+                            ) : (
                                 <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" viewBox="0 0 24 24">
                                     <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z" />
                                 </svg>
@@ -119,28 +140,32 @@ function MobileHeader() {
                         </div>
                         <form onSubmit={handleInputSubmit}>
                             <input type="text" name="query" id="query" placeholder="Estou buscando" autoComplete="off" ref={inputRef} />
-                        </form>
-                        <div className="input-results-root" ref={rootProductsRef}>
-                            <ul>
-                                {
-                                    queryData ? queryData.map((product, index) => (
-                                        <li key={index}>
-                                            <a href="#">
-                                                <section className="img-mini-wrapper">
-                                                    <img src={product.image.default} alt="" />
+                            <div className="input-results-root" ref={rootProductsRef}>
+                                <ul>
+                                    {queryData ? (
+                                        queryData.map((product, index) => (
+                                            <li key={index}>
+                                                <Link onClick={checkRoute} 
+                                                    to={`/product/${product.title}`}>
+                                                    <section className="img-mini-wrapper">
+                                                        <img src={product.image.default} alt="" />
                                                     </section>
-                                                <div>
-                                                    <h3>{product.title}</h3>
-                                                    <p>R$ {product.price}
-                                                        <span>{product.percentOFF}% OFF</span>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    )) : <></>
-                                }
-                            </ul>
-                        </div>
+                                                    <div>
+                                                        <h3>{product.title}</h3>
+                                                        <p>
+                                                            R$ {product.price}
+                                                            <span>{product.percentOFF}% OFF</span>
+                                                        </p>
+                                                    </div>
+                                                </Link>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <></>
+                                    )}
+                                </ul>
+                            </div>
+                        </form>
                     </div>
                     <button className={`hamburguer-menu`} onClick={handleButtonClick}>
                         <span id="first-span"></span>

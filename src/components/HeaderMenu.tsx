@@ -25,7 +25,7 @@ function WelcomeMenu() {
 
 async function getRandomProfilePicture() {
     const number = Math.floor(Math.random() * 4) + 1;
-    const image = await import(/* @vite-ignore */`../assets/untitled${number}.png`)
+    const image = await import(/* @vite-ignore */`../assets/untitled${number}.webp`)
     return image.default;
 }
 

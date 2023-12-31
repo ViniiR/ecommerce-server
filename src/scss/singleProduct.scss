@@ -11,7 +11,9 @@
     > h2 {
         font-size: 1.3rem;
     }
-    > section {
+    > a {
+        text-decoration: none;
+        color: black;
         > .img-wrapper-sp {
             width: 100%;
             display: grid;

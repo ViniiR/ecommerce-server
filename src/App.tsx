@@ -16,6 +16,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import CarrinhoDeCompras from "./pages/CarrinhoDeCompras";
 import SearchPage from "./pages/SearchPage";
 import CepPage from "./pages/CepPage";
+import Product from "./pages/Product";
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
                     <Route path="/crie-sua-conta" element={<CriarContaPage />}></Route>
                     <Route path="/search" element={<SearchPage />}></Route>
                     <Route path="/cep" element={<CepPage />}></Route>
+                    <Route path="/product" element={<Product />}>
+                        <Route path="/product/:product" element={<Product/>}></Route>
+                    </Route>
                     <Route element={<ProtectedRoutes />}>
                         <Route element={<CarrinhoDeCompras />} path="/carrinho"></Route>
                     </Route>

@@ -9,7 +9,7 @@ function SingleProduct() {
         async function fetchData() {
             const dataArray: SPData = {
                 image: await import('../assets/D_Q_NP_2X_928869-MLU69966645745_062023-V.webp'),
-                title: 'Moto E22 Dual SIM 128GB preto 4GB RAM',
+                title: 'Smartphone E22 128GB 4g 6,5 HD+ Câmera Dupla 16MP',
                 price: '719',
                 oldPrice: '1.299',
                 percentOFF: '44',
@@ -29,7 +29,7 @@ function SingleProduct() {
                 <h2>
                     Oferta do dia
                 </h2>
-                <section>
+                <Link to={`/product/${content?.title}`}>
                     <section className="img-wrapper-sp">
                         <img src={content?.image.default} alt="" />
                     </section>
@@ -51,7 +51,7 @@ function SingleProduct() {
                     <p className="frete-gratis-full">
                         Frete grátis FULL
                     </p>
-                </section>
+                </Link>
                 <Link to="/search?q=allProducts" className='single-product-footer'>
                     <p>Ver todas as ofertas</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

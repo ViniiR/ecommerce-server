@@ -21,6 +21,8 @@
         width: 100%;
         gap: 10px;
         .inner-four-products {
+            text-decoration: none;
+            color: black;
             display: flex;
             height: 350px;
             flex-flow: column nowrap;

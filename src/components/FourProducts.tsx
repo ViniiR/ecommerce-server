@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../scss/fourProducts.scss'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 type ResponseData = {
     data: [
@@ -89,7 +90,7 @@ function FourProducts() {
                 <section className="four-products-wrapper">
                     {
                         content.map((contentNode, index) => (
-                            <section className='inner-four-products' key={index}>
+                            <Link to={`/product/${contentNode.title}`} className='inner-four-products' key={index}>
                                 <section className="img-four-products-wrapper">
                                     <img src={contentNode.image.default} alt="" />
                                 </section>
@@ -105,7 +106,7 @@ function FourProducts() {
                                 <p className='frete-gratis-four-products'>
                                     Frete grátis FULL
                                 </p>
-                            </section>
+                            </Link>
                         ))
                     }
                 </section>
