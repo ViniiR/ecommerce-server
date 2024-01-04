@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg";
 import { useState, useEffect } from "react";
 import { resolveImages, retrieveQueryData } from "../utils/utils";
 import InformeCep from "../components/InformeCep";
+import { Link } from "react-router-dom";
 
 function SearchPage() {
     const [queryData, setQueryData] = useState<SPData[]>([])
@@ -31,7 +32,7 @@ function SearchPage() {
                     {queryData ? (
                         queryData.map((product, index) => (
                             <li key={index}>
-                                <a href="#">
+                                <Link to={`/product/${product?.title}`}>
                                     <section className="img-big-wrapper">
                                         <img src={product.image.default} alt="" />
                                     </section>
@@ -47,7 +48,7 @@ function SearchPage() {
                                             </span>
                                         </p>
                                     </div>
-                                </a>
+                                </Link>
                             </li>
                         ))
                     ) : (

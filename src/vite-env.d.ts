@@ -37,6 +37,7 @@ type SPData = {
     oldPrice: string;
     percentOFF: string;
     dividedPrice: string;
+    occurrences?: number;
 };
 
 type UnresolvedSPData = {
@@ -44,6 +45,7 @@ type UnresolvedSPData = {
     price: string;
     oldPrice: string;
     percentOFF: number;
+    occurrences?: number;
     dividedPrice: string;
     imagePath: string;
 };

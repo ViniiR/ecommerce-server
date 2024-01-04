@@ -1,8 +1,33 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import '../scss/product.scss'
 import MobileHeader from "../components/MobileHeader";
 import MobileFooter from "../components/MobileFooter";
+
+function formSubmit(event: FormEvent) {
+    event.preventDefault()
+    const time = new Date().getHours()
+    const mensagens = [
+        "um bom dia",
+        "uma boa tarde",
+        "uma boa noite",
+    ];
+    window.alert(`Sua compra seria realizada caso esse website não fosse fictício, tenha ${
+        time < 12 ? mensagens[0] : time < 17 ? mensagens[1] : mensagens[2]
+    }`);
+}
+
+function setItem(name: string, data: unknown[] | SPData | undefined) {
+    if (!Array.isArray(data)) {
+        data = [data]
+    }
+    const stringed = JSON.stringify(data)
+    localStorage.setItem(name, stringed)
+}
+
+function getItem(name: string): SPData[] {
+    return JSON.parse(localStorage.getItem(name) as string)
+}
 
 function Product() {
     const [data, setData] = useState<SPData>()
@@ -22,6 +47,19 @@ function Product() {
                 console.error(err)
             });
     }, []);
+
+    function addToCart() {
+        const cart = getItem('cart')
+        const cartExists = cart ? cart!.length > 0 : false
+        if (cartExists) {
+            const cartArray: SPData[] = getItem('cart')
+            cartArray.push(data!)
+            setItem('cart', cartArray)
+        } else {
+            setItem('cart', data)
+        }
+    }
+
     return (
         <main>
             {
@@ -48,6 +86,12 @@ function Product() {
                                 OFERTA DO DIA
                             </p>
                         </section>
+                        <form className="comprar-button-product" onSubmit={formSubmit}>
+                            <input type="submit" value="Comprar" />
+                        </form>
+                        <button className="adicionar-carrinho-product" onClick={addToCart}>
+                            Adicionar ao carrinho
+                        </button>
                     </main>
                     <MobileFooter></MobileFooter>
                 </section> 
