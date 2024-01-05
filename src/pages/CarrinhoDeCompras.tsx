@@ -17,6 +17,8 @@ function getDuplicatesAmount(dataSet: Set<string>, array: SPData[]) {
             }
             if (object.occurrences) {
                 duplicateOccurrences = object.occurrences;
+            } else if(object.occurrences === undefined) {
+                object.occurrences = 1;
             }
         }
         occurrences[title] = duplicateOccurrences;
@@ -41,6 +43,7 @@ function formSubmit() {
 }
 
 //FIXME: when i add more products i believe specially from product.tsx page the products on cart get their occurrences messed up for example some had 3 instead of 1, goodluck
+//just happened again when i add a product from its own page and it exchanged the occurrences from another product
 function CarrinhoDeCompras() {
     const [data, setData] = useState<SPData[]>([]);
 
@@ -58,18 +61,12 @@ function CarrinhoDeCompras() {
             const cleanNumber = formattedNumber.replace(/,/g, "").replace(",", "");
             return Number(cleanNumber);
         }
-        data.forEach((item) => {
-            if (item.occurrences!) {
-                console.log(item);
-            }
-        });
         const converted = data.map((item: SPData) => ({
             price: convertToUSNumberFormat(item.price),
             occurrences: item.occurrences,
         }));
         const multiplied = converted.map((item) => Number(item.price) * item.occurrences!);
         const finalPrice = multiplied.reduce((acc, price) => acc + price, 0);
-        //FIXME: value becomes NaN if its too large/there too many products occurrences
         return finalPrice.toLocaleString("pt-BR");
     }
 

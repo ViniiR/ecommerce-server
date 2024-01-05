@@ -17,3 +17,42 @@ body{
     margin: 0;
     padding: 0;
 }
+
+.cookie-alert {
+    z-index: 99999;
+    position: fixed;
+    height: calc(100vh - 20px);
+    top: 0px;
+    left: 0px;
+    background-color: rgba(128, 128, 128, 0.41);
+    display: flex;
+    align-items: end;
+    padding: 20px;
+    > div {
+        background-color: white;
+        width: 100%;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.095);
+        border: 1px solid gray;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        > div {
+            display: flex;
+            margin-top: 10px;
+            justify-content: space-around;
+            > button {
+                width: 95%;
+                border-radius: 5px;
+                height: 30px;
+                border: 1px solid gray;
+                &.aceito-cookies {
+                    background-color: $blue-shade;
+                    color: white;
+                }
+            }
+        }
+    }
+}

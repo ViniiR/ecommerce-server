@@ -3,9 +3,44 @@ const { Op } = require("sequelize");
 const router = express.Router();
 const { productsData } = require("../models");
 
+function convertToNumber(number) {
+    const cleanNumberString = number.replace(/\./g, "").replace(",", ".");
+    return cleanNumberString;
+}
+
 router.get("/", async (req, res) => {
     try {
         const query = req.query.query;
+        if (query === "menos-de-100") {
+            const results = await productsData.findAll();
+            const products = results.map((product) => ({
+                title: product.title,
+                price: product.price,
+                oldPrice: product.oldPrice,
+                percentOFF: product.percentOFF,
+                dividedPrice: product.dividedPrice,
+                imagePath: product.imagePath,
+            }));
+            const localized = products.map((product) => ({
+                title: product.title,
+                price: convertToNumber(product.price),
+                oldPrice: product.oldPrice,
+                percentOFF: product.percentOFF,
+                dividedPrice: product.dividedPrice,
+                imagePath: product.imagePath,
+            }));
+            const filtered = localized.map((product) => product.price <= 100 ? ({
+                title: product.title,
+                price: product.price,
+                oldPrice: product.oldPrice,
+                percentOFF: product.percentOFF,
+                dividedPrice: product.dividedPrice,
+                imagePath: product.imagePath,
+            }) : null)
+                .filter(Boolean);
+            res.status(200).send(filtered)
+            return;
+        }
         if (query === "allProducts") {
             const results = await productsData.findAll();
             const products = results.map((product) => ({

@@ -14,11 +14,11 @@ function MeliPlus() {
                 },
                 {
                     icon: await import('../assets/combo-widgetl6@2x.jpg'),
-                    description: 'NotDisn+ e Estrela+ sem custo',
+                    description: 'Mercado+ e Mercado Estrela+ sem custo',
                 },
                 {
                     icon: await import('../assets/deezer-l6widget@2x.jpg'),
-                    description: '12 Meses grátis da Deznts Premium',
+                    description: '12 Meses grátis de Musicas Top Premium',
                 },
                 {
                     icon: await import('../assets/ultrapasse-widget@2x.png'),

@@ -13,13 +13,13 @@ function BeneficiosConteudo() {
                     background: await import('../assets/disney_star_widgetmulti_mobdsk_mlb_@2x.jpg'),
                     icon: await import('../assets/combo-widgetl6@2x.jpg'),
                     title: 'Sem custo com V+',
-                    description: 'NotDisn+ e Estrela+',
+                    description: 'Mercado+ e Mercado Estrela+',
                 },
                 {
                     background: await import('../assets/HBOMax_widgetmulti_mobdsk_mlb_@2x.jpg'),
                     icon: await import('../assets/logoSquare@2x.png'),
                     title: 'Até 30% OFF',
-                    description: 'HEY Max',
+                    description: 'Mercado Max',
                 },
                 {
                     background: await import('../assets/paramount_widgetmulti_mobdsk_brasil_@2x.jpg'),
