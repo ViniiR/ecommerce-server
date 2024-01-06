@@ -24,6 +24,7 @@ export async function isValidToken() {
     if (!localStorage.getItem('loginToken')) {
         return {isValidToken: false, userName: ''}
     }
+    console.log(localStorage.getItem('loginToken'));
     const res: ApiResponse = await axios.get(`${ServerURL}auth-token`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("loginToken")}`

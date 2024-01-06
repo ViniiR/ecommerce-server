@@ -1,4 +1,4 @@
-Website criado com intuito de aprendizado, todos os direitos de imagem estão reservados a mercadolivre.com.br
+Website criado com intuito de aprendizado
 <!-- # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

@@ -60,7 +60,7 @@ function App() {
                     <Route path="/search" element={<SearchPage />}></Route>
                     <Route path="/cep" element={<CepPage />}></Route>
                     <Route path="/info" element={<InfoPage />}></Route>
-                    <Route path="v-plus" element={<VPLus/>}></Route>
+                    <Route path="/v-plus" element={<VPLus/>}></Route>
                     <Route path="/product" element={<Product />}>
                         <Route path="/product/:product" element={<Product />}></Route>
                     </Route>

@@ -6,9 +6,11 @@ function hasEmailOnly(obj) {
 
 async function findBy(reqBody) {
     if (hasEmailOnly(reqBody)) {
-        return await Users.findOne({ where: { email: reqBody.email } });
+        const res = await Users.findOne({ where: { email: reqBody.email } });
+        return res
     } else {
-        return await Users.findOne({ where: { name: reqBody.name } });
+        const res = await Users.findOne({ where: { name: reqBody.name } });
+        return res
     }
 }
 

@@ -75,7 +75,11 @@
                 background-color: $blue-shade;
                 color: white;
                 height: 35px;
+                transition: font-size .1s linear;
                 &:hover {
+                    font-size: .95rem;
+                }
+                &:active {
                     background-color: $background-shade;
                     color: $blue-shade;
                     border-color: $blue-shade;
@@ -89,7 +93,11 @@
             border: 1px solid gray;
             background-color: $green-shade;
             color: white;
+            transition: font-size .1s linear;
             &:hover {
+                font-size: .95rem;
+            }
+            &:active {
                 background-color: $background-shade;
                 color: $green-shade;
                 border-color: $green-shade;
