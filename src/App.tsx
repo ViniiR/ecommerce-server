@@ -20,6 +20,7 @@ import Product from "./pages/Product";
 import { useEffect, useState } from "react";
 import InfoPage from "./pages/InfoPage";
 import VPLus from "./pages/VPlus";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     const [cookie, setCookie] = useState(false);
@@ -51,6 +52,7 @@ function App() {
                 </div>
             ) : null}
             <Router>
+                <ScrollToTop></ScrollToTop>
                 <Routes>
                     <Route path="/" element={<HomePage />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>

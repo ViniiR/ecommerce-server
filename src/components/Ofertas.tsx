@@ -63,9 +63,9 @@ function Ofertas() {
                 <ul className="ofertas-ul" ref={carrouselRef}>
                     {images.map((image, index) => (
                         <li key={index}>
-                            <a href="">
+                            <div>
                                 <img src={image} alt="" />
-                            </a>
+                            </div>
                         </li>
                     ))}
                 </ul>
