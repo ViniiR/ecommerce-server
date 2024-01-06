@@ -23,18 +23,18 @@ function CartProduct({product, changeAmount}: CartProps) {
                     <div>
                         <button
                             onClick={() => {
-                                changeAmount(product, true);
-                            }}
-                        >
-                            +
-                        </button>
-                        <output>{product.occurrences}</output>
-                        <button
-                            onClick={() => {
                                 changeAmount(product, false);
                             }}
                         >
                             -
+                        </button>
+                        <output>{product.occurrences}</output>
+                        <button
+                            onClick={() => {
+                                changeAmount(product, true);
+                            }}
+                        >
+                            +
                         </button>
                     </div>
                 </div>

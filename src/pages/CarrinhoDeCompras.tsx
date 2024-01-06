@@ -91,6 +91,9 @@ function CarrinhoDeCompras() {
 
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("cart") as string);
+        if (cart == null) {
+            return
+        }
         const query = checkForDuplicates(cart);
         axios
             .get(`${ServerURL}query-data/cart`, {
@@ -110,7 +113,9 @@ function CarrinhoDeCompras() {
                         occurrences: element.occurrences,
                     }))
                 ).then((data) => {
+                    localStorage.setItem('cart', JSON.stringify(data))
                     setData(data);
+                    return;
                 });
             });
     }, []);
