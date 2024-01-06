@@ -17,8 +17,6 @@ function getDuplicatesAmount(dataSet: Set<string>, array: SPData[]) {
             }
             if (object.occurrences) {
                 duplicateOccurrences = object.occurrences;
-            } else if(object.occurrences === undefined) {
-                object.occurrences = 1;
             }
         }
         occurrences[title] = duplicateOccurrences;
