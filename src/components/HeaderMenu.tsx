@@ -40,7 +40,7 @@ function UserInformation(userName: string, handleLogoff: MouseEventHandler<HTMLB
                 </section>
             </section>
             <section id="entre-crie-conta-buttons-section">
-                <button id="logoff-button" onClick={handleLogoff}>Log Off</button>
+                <button id="logoff-button" onClick={handleLogoff}>Log Out</button>
             </section>
         </header>
     )

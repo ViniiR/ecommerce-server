@@ -19,6 +19,7 @@ import CepPage from "./pages/CepPage";
 import Product from "./pages/Product";
 import { useEffect, useState } from "react";
 import InfoPage from "./pages/InfoPage";
+import VPLus from "./pages/VPlus";
 
 function App() {
     const [cookie, setCookie] = useState(false);
@@ -57,6 +58,7 @@ function App() {
                     <Route path="/search" element={<SearchPage />}></Route>
                     <Route path="/cep" element={<CepPage />}></Route>
                     <Route path="/info" element={<InfoPage />}></Route>
+                    <Route path="v-plus" element={<VPLus/>}></Route>
                     <Route path="/product" element={<Product />}>
                         <Route path="/product/:product" element={<Product />}></Route>
                     </Route>

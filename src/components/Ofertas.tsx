@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../scss/ofertas.scss";
 import { useState, useRef, useEffect, useCallback,  } from "react";
 
@@ -58,7 +59,7 @@ function Ofertas() {
 
     return (
         <>
-            <section className="ofertas-carrousel">
+            <Link to='/search?q=allProducts' className="ofertas-carrousel">
                 <ul className="ofertas-ul" ref={carrouselRef}>
                     {images.map((image, index) => (
                         <li key={index}>
@@ -68,7 +69,7 @@ function Ofertas() {
                         </li>
                     ))}
                 </ul>
-            </section>
+            </Link>
         </>
     );
 }

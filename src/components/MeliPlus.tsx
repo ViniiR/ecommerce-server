@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../scss/meliPlus.scss'
+import { Link } from 'react-router-dom';
 
 function MeliPlus() {
     const [content, setContent] = useState<dataObject[]>([]);
@@ -74,12 +75,12 @@ function MeliPlus() {
                         }
                     </ul>
                 </main>
-                <footer>
-                    <a href="">Assinar o V+</a>
+                <Link to="/v-plus">
+                    <p>Assinar o V+</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
                     </svg>
-                </footer>
+                </Link>
             </section>
         </>
     );

@@ -15,13 +15,13 @@ function MobileFooter() {
                 <section className="footer-mobile-links">
                     <ul>
                         <li><a href="#">Minha conta</a></li>
-                        <li><a href="#">Compras</a></li>
+                        <li><Link to="/carrinho">Compras</Link></li>
                         <li><a href="#">Histórico</a></li>
-                        <li><a href="#">Ofertas do dia</a></li>
+                        <li><Link to="/search?q=allProducts">Ofertas do dia</Link></li>
                         <li><a href="#">Favoritos</a></li>
                         <li><a href="#">Lojas oficiais</a></li>
                         <li><a href="#">Categorias</a></li>
-                        <li><a href="#">V+</a></li>
+                        <li><Link to="v-plus">V+</Link></li>
                         <li><a href="#">Contato</a></li>
                         <li><a href="#">Vender</a></li>
                     </ul>

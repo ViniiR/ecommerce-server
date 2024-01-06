@@ -4,6 +4,7 @@ import { userSchema } from "../Validations/UserValidation";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
+import ServerURL from "../config";
 
 function FormContent() {
 
@@ -31,7 +32,7 @@ function FormContent() {
 
         if (isValid) {
             try {
-                await axios.post('http://localhost:5000/user', data);
+                await axios.post(`${ServerURL}user`, data);
                 navigate('/')
             } catch (err) {
                 setErrorMessage('Nome ou Email já estão em uso')

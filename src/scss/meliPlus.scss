@@ -71,9 +71,12 @@
             }
         }
     }
-    > footer {
+    > a {
+        text-decoration: none;
+        color: $blue-shade;
         display: flex;
         justify-content: space-between;
+        font-weight: 600;
         padding: 10px;
         > a {
             color: $blue-shade;

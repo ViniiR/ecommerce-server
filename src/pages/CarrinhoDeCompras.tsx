@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.svg";
-import InformeCep from "../components/InformeCep";
 import "../scss/carrinhoCompras.scss";
 import axios from "axios";
 import MobileFooter from "../components/MobileFooter";
 import { Link } from "react-router-dom";
 import CartProduct from "../components/CartProduct";
+import ServerURL from "../config";
+import MobileHeader from "../components/MobileHeader";
 
 function getDuplicatesAmount(dataSet: Set<string>, array: SPData[]) {
     const occurrences: { [key: string]: number } = {};
@@ -42,8 +42,6 @@ function formSubmit() {
     window.alert('Sua compra seria realizada caso esse fosse um website real')
 }
 
-//FIXME: when i add more products i believe specially from product.tsx page the products on cart get their occurrences messed up for example some had 3 instead of 1, goodluck
-//just happened again when i add a product from its own page and it exchanged the occurrences from another product
 function CarrinhoDeCompras() {
     const [data, setData] = useState<SPData[]>([]);
 
@@ -95,7 +93,7 @@ function CarrinhoDeCompras() {
         const cart = JSON.parse(localStorage.getItem("cart") as string);
         const query = checkForDuplicates(cart);
         axios
-            .get("http://localhost:5000/query-data/cart", {
+            .get(`${ServerURL}query-data/cart`, {
                 params: {
                     query: query,
                 },
@@ -119,12 +117,7 @@ function CarrinhoDeCompras() {
 
     return (
         <main className="cart-page">
-            <header className="cart-header">
-                <a href="/">
-                    <img src={logo} alt="" />
-                </a>
-            </header>
-            <InformeCep></InformeCep>
+            <MobileHeader></MobileHeader>
             {data?.length > 0 ? (
                 <main className="cart-body">
                     <form className="cart-buy" onSubmit={formSubmit}>
@@ -135,41 +128,11 @@ function CarrinhoDeCompras() {
                     </form>
                     <ul className="cart-items">
                         {data.map((product, index) => (
-                            <CartProduct key={index} product={product} changeAmount={changeAmount}>
-                                
+                            <CartProduct 
+                                key={index} 
+                                product={product} 
+                                changeAmount={changeAmount}>
                             </CartProduct>
-                            // <li key={index}>
-                            //     <a href="#">
-                            //         <section className="img-big-wrapper">
-                            //             <img src={product.image.default} alt="" />
-                            //         </section>
-                            //         <div className="div-big-wrapper-description">
-                            //             <h3>{product.title}</h3>
-                            //             <p className="line-through-p">R$ {product.oldPrice}</p>
-                            //             <p className="main-price-p">
-                            //                 R$ {product.price}
-                            //                 <span>{product.percentOFF}% OFF</span>
-                            //             </p>
-                            //             <div>
-                            //                 <button
-                            //                     onClick={() => {
-                            //                         changeAmount(product, true);
-                            //                     }}
-                            //                 >
-                            //                     +
-                            //                 </button>
-                            //                 <output>{product.occurrences}</output>
-                            //                 <button
-                            //                     onClick={() => {
-                            //                         changeAmount(product, false);
-                            //                     }}
-                            //                 >
-                            //                     -
-                            //                 </button>
-                            //             </div>
-                            //         </div>
-                            //     </a>
-                            // </li>
                         ))}
                     </ul>
                 </main>

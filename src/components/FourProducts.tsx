@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import '../scss/fourProducts.scss'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ServerURL from '../config';
 
 type ResponseData = {
     data: [
@@ -22,7 +23,7 @@ function FourProducts() {
 
     useEffect(() => {
         async function fetchProductsData() {
-            const res: ResponseData = await axios.get(`http://localhost:5000/retrieve-data`);
+            const res: ResponseData = await axios.get(`${ServerURL}retrieve-data`);
             const data = res.data
 
             const updatedData = await Promise.all(data.map(async (obj) => ({

@@ -4,6 +4,7 @@ import "../scss/loginPage.scss";
 import axios from "axios";
 import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import ServerURL from "../config";
 
 type UserLoginData = {
     name?: string;
@@ -32,7 +33,7 @@ function LoginPage() {
             return;
         }
         try {
-            const res = await axios.post("http://localhost:5000/user/login", userData);
+            const res = await axios.post(`${ServerURL}user/login`, userData);
             if (res.status === 201) {
                 navigate("/");
                 localStorage.setItem("loginToken", res.data.accessToken);

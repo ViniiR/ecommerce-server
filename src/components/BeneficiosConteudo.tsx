@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import '../scss/beneficiosConteudo.scss'
+import { Link } from "react-router-dom";
 
 function BeneficiosConteudo() {
 
@@ -37,7 +38,7 @@ function BeneficiosConteudo() {
 
     return (
         <>
-            <section className="beneficios-container">
+            <Link to='/v-plus' className="beneficios-container">
                 <h2>
                     Benefícios em conteúdo
                 </h2>
@@ -63,7 +64,7 @@ function BeneficiosConteudo() {
                         ))
                     }
                 </ul>
-            </section>
+            </Link>
         </>
     );
 }

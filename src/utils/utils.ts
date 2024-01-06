@@ -1,8 +1,9 @@
 import axios from "axios";
+import ServerURL from "../config";
 
 export async function retrieveQueryData(inputValue: string){
     try {
-        const res = await axios.get("http://localhost:5000/query-data", {
+        const res = await axios.get(`${ServerURL}query-data`, {
             params: {
                 query: inputValue,
             },
@@ -23,7 +24,7 @@ export async function isValidToken() {
     if (!localStorage.getItem('loginToken')) {
         return {isValidToken: false, userName: ''}
     }
-    const res: ApiResponse = await axios.get("http://localhost:5000/auth-token", {
+    const res: ApiResponse = await axios.get(`${ServerURL}auth-token`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("loginToken")}`
         }

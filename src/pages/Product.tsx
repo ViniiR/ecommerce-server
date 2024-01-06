@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import '../scss/product.scss'
 import MobileHeader from "../components/MobileHeader";
 import MobileFooter from "../components/MobileFooter";
+import ServerURL from "../config";
 
 function formSubmit(event: FormEvent) {
     event.preventDefault()
@@ -32,7 +33,7 @@ function getItem(name: string): SPData[] {
 function Product() {
     const [data, setData] = useState<SPData>()
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/${window.location.href.split('/')[4]}`)
+        axios.get(`${ServerURL}product/${window.location.href.split('/')[4]}`)
             .then(async (data) => {
                 const resolvedData: SPData = {
                     title: data.data.product.title,
